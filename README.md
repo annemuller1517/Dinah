@@ -84,3 +84,14 @@ The app is created for people who want to have a restaurant home experience.
 })
 
 
+## External API
+ - https://spoonacular.com/food-api/
+    - name 
+    - cuisine type
+    - ingredients
+    - image
+    - description 
+    - instructions
+    - wine pairing
+    - time 
+    - allergies
