@@ -16,52 +16,28 @@ router.get('/recipes', (req, res, next) => {
     });
 });
 
-router.get('/recipes', (req, res, next) => {
-  Recipe.find()
-    .then((recipes) => {
-      res.render('recipes/recipe.hbs', { recipes });
+router.get('/recipes/:id', (req, res, next) => {
+  let { id } = req.params;
+
+  Recipe.findOne({ id })
+    .then((oneRecipe) => {
+      res.render('recipes/recipe-details.hbs', { oneRecipe });
     })
     .catch(() => {
-      next('Failed loading title');
-    });
-});
-
-router.get('/:id/details', (req, res, next) => {
-  const { id } = req.params;
-
-  Recipe.findById(id)
-    .then((oneRecipe) =>
-      res.render('recipes/recipe-details.hbs', { oneRecipe })
-    )
-    .catch(() => {
       next('Err while getting one recipe');
     });
 });
 
-router.get('/:id/details', (req, res, next) => {
-  const { id } = req.params;
+router.get('/cuisine/:cuisine', (req, res, next) => {
+  let { cuisine } = req.params;
 
-  Recipe.findById(id)
-    .then((oneRecipe) =>
-      res.render('recipes/recipe-details.hbs', { oneRecipe })
-    )
+  Recipe.findOne(cuisine)
+    .then((oneRecipe) => {
+      res.render('recipes/cuisine.hbs', { oneRecipe });
+    })
     .catch(() => {
       next('Err while getting one recipe');
     });
-});
-
-router.post('/recipes/:id', (req, res, next) => {
-  const { id } = req.params;
-
-  //comments
-
-  // Recipe.findById(id)
-  //   .then((oneRecipe) =>
-  //     res.render('recipes/recipe-details.hbs', { oneRecipe })
-  //   )
-  //   .catch(() => {
-  //     next('Err while getting one recipe');
-  //   });
 });
 
 module.exports = router;
