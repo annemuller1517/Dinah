@@ -22,7 +22,7 @@ router.post("/signup", (req, res, next) => {
 
     let emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     if (!emailRegEx.test(email)) {
-        res.render("auth/signup", {error:"Please enter a email"})
+        res.render("auth/signup", {error:"Please Enter Valid Email"})
         return;
     }
 
@@ -34,7 +34,7 @@ router.post("/signup", (req, res, next) => {
     }
 
 
-    UserModel.create({username, password: hash})
+    UserModel.create({username, email, password: hash})
         .then(()=> {
             res.redirect('/');
         })
@@ -43,9 +43,11 @@ router.post("/signup", (req, res, next) => {
         })
 })
 
+
 router.get("/signin", (req, res, next) => {
-    res.render("auth/signin.hbs")
+    res.render('auth/signup.hbs')
 })
+
 
 router.post("/signin", (req, res, next) => {
     let {username, password} = req.body
@@ -61,12 +63,12 @@ router.post("/signin", (req, res, next) => {
                 res.redirect("/")
             }
             else {
-                res.render("auth/signin.hbs", {error:"Failed to signin"})
+                res.render("auth/signup.hbs", {error:"Failed To Sign In"})
                 return
             }
         }
         else {
-            res.render("auth/signin.hbs", {error:"Username does not exist"})
+            res.render("auth/signup.hbs", {error:"Please Enter Username"})
             return
         }
 
@@ -88,16 +90,8 @@ const checkLogIn = (req, res, next) => {
 }
 
 
-router.get("/main", checkLogIn, (req, res, next) => {
-    res.render("auth/main.hbs")
+router.get("/profile", checkLogIn, (req, res, next) => {
+    res.render("auth/profile.hbs")
 })
-
-
-
-router.get("/private", checkLogIn, (req, res, next) => {
-    res.render("auth/private.hbs")
-})
-
-
 
 module.exports = router

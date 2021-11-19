@@ -67,7 +67,7 @@ button:hover {
 }
 
 form {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 form #signin {
@@ -113,3 +113,59 @@ form #signup {
   color: grey;
 }
 
+.error {
+  margin-top: 20px;
+}
+
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.homepage {
+  margin: 30px;
+}
+
+.homepage h4 {
+  text-align: center;
+}
+
+.homepage img {
+  width: 100px;
+  height: 200px;
+  border-radius: 5%;
+}
+
+.row {
+  margin-top: 60px;
+}
+
+.homepage h4:hover {
+  font-size: 30px;
+}
+
+.headText {
+  margin-top: 20px;
+  text-align: center;
+  color: green;
+}
+
+.homepage img:hover {
+  width: 110px;
+  height: 220px;
+  border-radius: 5%;
+}
+
+.homepage a {
+  text-decoration: none;
+  color: black;
+}
