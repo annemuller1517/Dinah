@@ -1,0 +1,39 @@
+<div class="flex-container">
+    <form action="/signup" method="POST">
+        <div class="containerSignup" id="signup">
+            <h1>Sign Up</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <label>Name</label>
+            <input name="username" type="text"  placeholder="Enter your username">
+            <label>Email</label>
+            <input name="email" type="text"  placeholder="Enter your email">
+            <label>Password</label>
+            <input name="password" type="password"  placeholder="Enter your Password">
+            <div class="clearfix">
+                <button type="submit" class="signupbtn">Sign Up</button>
+            </div>
+        </div>  
+      </form>
+    
+
+    <form method="POST" action="/signin" >
+        <div class="containerSignup" id="signin">
+            <h1>Sign In</h1>
+            <p>Please fill in this form to sign in.</p>
+            <hr>
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter your username"  >
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your Password"  >
+            <div class="clearfix">
+                <button type="submit" class="signupbtn">Sign In</button>
+            </div>
+        </div>   
+    </form>      
+</div>
+
+  
+  {{#if error}}
+  <p class="error">message:{{error}}</p>
+  {{/if}}

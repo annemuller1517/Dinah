@@ -7,7 +7,7 @@ let Recipe = require('../models/Recipe.model');
 const download = (id) => {
   axios
     .get(
-      `https://api.spoonacular.com/recipes/${id}/information?apiKey=5d685f063a694f9abaf8b6a866f4246b`
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=e5ebb2d50b05472aaf7d9626f7653127`
     )
     .then((infoResult) => {
       Recipe.insertMany([infoResult.data]);
@@ -19,11 +19,10 @@ const download = (id) => {
 };
 
 
-
 const search = (cuisine) => {
     axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=5d685f063a694f9abaf8b6a866f4246b&cuisine=${cuisine}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=e5ebb2d50b05472aaf7d9626f7653127&cuisine=${cuisine}`
     )
     .then((searchResult) => {
       searchResult.data.results.forEach((e) => {
@@ -35,12 +34,15 @@ const search = (cuisine) => {
     });
 };
 
+
 search('italian');
 search('indian');
 search('mexican');
 search('american');
+
+// try tomorrow 
 search('chinese');
 search('japanese');
 search('mediterranean');
 search('middle eastern');
-mongoose.connection.close()
+// mongoose.connection.close()
