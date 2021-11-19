@@ -1,0 +1,9 @@
+<h1>Recipes</h1>
+
+{{#each recipes}}
+  <img src='{{this.image}}' />
+  <div>
+    <a href='/recipes/{{this.id}}/details'>
+		{{this.title}}
+  </div>
+{{/each}}
