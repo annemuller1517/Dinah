@@ -73,6 +73,7 @@ The app is created for people who want to have a restaurant home experience.
         required: true
     }
     img: String
+    favorites
 })
 
 - Comment new Schema ({
@@ -83,6 +84,44 @@ The app is created for people who want to have a restaurant home experience.
     }
 })
 
+
+
+- Recipe new Schema ({
+    id: Number,
+    title: String,
+    image: String,
+    readyInMinutes: Number,
+    vegan: Boolean,
+    vegetarian: Boolean,
+    glutenFree: Booelean,
+    extendedIngredients: [
+        original: String,
+    ],
+    winePairing {
+        pairingText: String
+    },
+    cuisine: String,
+    instructions: []
+    
+})
+
+https://api.spoonacular.com/recipes/324694/analyzedInstructions
+- Instructions new Schema {
+    steps: [
+        {
+            step: String
+        }
+    ],
+    mainRecipe: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Recipe"
+    }
+}
+
+
+
+
+seed all the recipes in database, store in in a new model.
 
 ## External API
  - https://spoonacular.com/food-api/
