@@ -1,12 +1,115 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00b7ff;
+
+body {font-family: Arial, Helvetica, sans-serif;
+margin: 0px;}
+
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
 }
 
-h1 {
-  color: 15px;
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
 }
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.flex-container {
+  display: flex;
+}
+
+form {
+  margin-top: 100px;
+}
+
+form #signin {
+  margin-right: 100px;
+  margin-left: 20px;
+}
+
+form #signup {
+  margin-left: 100px;
+  margin-right: 20px;
+}
+.containerSignup {
+  border: 2px solid #f1f1f1;
+  padding: 50px;
+  height: 550px;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color:#f1f1f1;
+}
+
+.topnav a {
+  float: left;
+  color: grey;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  font-size: 20px;
+}
+
+.topnav a.active {
+  color: grey;
+}
+
+.topnav-right {
+  float: right;
+  color: grey;
+}
+
