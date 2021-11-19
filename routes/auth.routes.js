@@ -71,8 +71,6 @@ router.post("/signin", (req, res, next) => {
             res.render("auth/signup.hbs", {error:"Please Enter Username"})
             return
         }
-
-        //console.log(usernameResponse)
     })
     .catch((err)=> {
         next(err)
@@ -85,7 +83,7 @@ const checkLogIn = (req, res, next) => {
       next()
     }
     else {
-      res.redirect('/signin')
+      res.redirect('/signup')
     }
 }
 
