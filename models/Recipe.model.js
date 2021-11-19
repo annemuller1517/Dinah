@@ -8,6 +8,8 @@ const recipeSchema = new Schema ({
     vegan: Boolean,
     vegetarian: Boolean,
     glutenFree: Boolean,
+    servings: Number,
+    instructions: String,
     extendedIngredients: [{
         original: String,
     }],

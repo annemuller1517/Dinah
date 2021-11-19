@@ -18,10 +18,12 @@ const download = (id) => {
     });
 };
 
-const search = (cousine) => {
-  axios
+
+
+const search = (cuisine) => {
+    axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=5d685f063a694f9abaf8b6a866f4246b&cusine=${cousine}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=5d685f063a694f9abaf8b6a866f4246b&cuisine=${cuisine}`
     )
     .then((searchResult) => {
       searchResult.data.results.forEach((e) => {
@@ -34,3 +36,11 @@ const search = (cousine) => {
 };
 
 search('italian');
+search('indian');
+search('mexican');
+search('american');
+search('chinese');
+search('japanese');
+search('mediterranean');
+search('middle eastern');
+mongoose.connection.close()
