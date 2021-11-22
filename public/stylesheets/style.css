@@ -104,6 +104,9 @@ form #signup {
   font-size: 17px;
 }
 
+.logo {
+  height: 40px;
+}
 .topnav a:hover {
   font-size: 20px;
 }
@@ -121,7 +124,6 @@ form #signup {
   margin-top: 20px;
 }
 
-
 .column {
   float: left;
   width: 25%;
@@ -130,7 +132,7 @@ form #signup {
 
 /* Clear floats after image containers */
 .row::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
@@ -148,7 +150,6 @@ form #signup {
   height: 200px;
   border-radius: 5%;
 }
-
 .row {
   margin-top: 60px;
 }
@@ -174,14 +175,58 @@ form #signup {
   color: black;
 }
 
+.title {
+  font-weight: 600;
+  font-size: medium;
+  color: green;
+}
+.cuisine-list {
+  justify-content: space-around;
+}
+.cuisine-button {
+  color: grey;
+}
+.head-cuisine {
+  text-align: center;
+  text-transform: uppercase;
+}
+.container {
+  border: 3px solid grey;
+  padding: 20px;
+}
+.icons {
+  height: 40px;
+}
+.images {
+  height: 200px;
+  border-radius: 6%;
+}
+.title-ready {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.image-ins {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
 
-input[type=text]{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
+.instruction {
+  padding-left: 10px;
+}
+
+.select-button {
+  height: 50px;
+  width: 100px;
+}
+.form {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
