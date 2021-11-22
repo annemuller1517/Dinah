@@ -33,14 +33,23 @@ router.post("/signup", (req, res, next) => {
         return;
     }
 
-
-    UserModel.create({username, email, password: hash})
-        .then(()=> {
-            res.redirect('/');
-        })
-        .catch((err)=> {
-            next(err)
-        })
+    UserModel.findOne({ username })
+        .then(user => {
+                if (!user) {
+                    UserModel.create({username, email, password: hash})
+                    .then((user)=> {
+                        req.session.loggedInUser = user
+                        req.app.locals.isLoggedIn = true;
+                        res.redirect('/profile')  
+                    })
+                    .catch((err)=> {
+                        next(err)
+                    })
+                }
+                else {
+                    return res.render('auth/signup.hbs', {error: 'Username already registered.'})
+                }      
+                })
 })
 
 
@@ -51,7 +60,7 @@ router.get("/signin", (req, res, next) => {
 
 router.post("/signin", (req, res, next) => {
     let {username, password} = req.body
-    UserModel.find({username})
+    UserModel.findOne({username})
     .then((usernameResponse) => {
         if(usernameResponse.length) {        
             
@@ -60,7 +69,7 @@ router.post("/signin", (req, res, next) => {
        
             if (isMatching){
                 req.session.myProperty = userObj;
-                res.redirect("/")
+                res.render("auth/profile", {username})
             }
             else {
                 res.render("auth/signup.hbs", {error:"Failed To Sign In"})
@@ -77,19 +86,12 @@ router.post("/signin", (req, res, next) => {
     })
 })
 
-const checkLogIn = (req, res, next) => {
-    if (req.session.myProperty ) {
-      //invokes the next available function
-      next()
-    }
-    else {
-      res.redirect('/signup')
-    }
-}
-
-
-router.get("/profile", checkLogIn, (req, res, next) => {
-    res.render("auth/profile.hbs")
-})
+// router.get('/logout', (req, res, next) => {
+//     req.session.destroy(function(e){
+//       req.logout();
+//       req.app.locals.isLoggedIn = false;
+//       res.redirect('/');
+//     }); 
+//   })
 
 module.exports = router

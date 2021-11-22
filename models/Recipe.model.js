@@ -8,6 +8,8 @@ const recipeSchema = new Schema({
   vegan: Boolean,
   vegetarian: Boolean,
   glutenFree: Boolean,
+  dairyFree: Boolean,
+  dishTypes: [],
   servings: Number,
   instructions: String,
   extendedIngredients: [
@@ -19,6 +21,8 @@ const recipeSchema = new Schema({
     pairingText: String,
   },
   cuisines: [],
+  healthScore: Number,
+
 });
 
 const Recipe = model('Recipe', recipeSchema);

@@ -1,7 +1,7 @@
 <h1>{{cuisine}}</h1>
 
 {{#each oneCuisine}}
-  <a href='/recipe/{{this.id}}'>{{this.title}}</a>
+  <a href='/recipe/{{this._id}}'>{{this.title}}</a>
   <img src='{{this.image}}' />
   <div>{{{this.instructions}}}</div>
   <br />

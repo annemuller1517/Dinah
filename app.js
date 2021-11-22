@@ -44,6 +44,20 @@ app.use(
   })
 );
 
+app.use((req,res,next) => {
+  
+  // req.app.locals.profilePic = "images/default-avatar.png"
+    // if (req.app.locals.isLoggedIn) {
+    //    req.app.locals.profilePic = req.session.loggedInUser.profilePic
+    // }  
+    req.app.locals.isLoggedIn = !!req.session.loggedInUser;
+    next()
+  })
+  
+
+
+
+
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
@@ -53,6 +67,9 @@ app.use('/', recipes);
 
 const authRoutes = require('./routes/auth.routes');
 app.use('/', authRoutes);
+
+const user = require('./routes/user.routes');
+app.use('/', user);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);

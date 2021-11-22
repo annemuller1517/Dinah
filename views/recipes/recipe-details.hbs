@@ -1,7 +1,54 @@
 <h1> DETAILS</h1>
 
-<h1>{{oneRecipe.title}}</h1>
-<img src='{{oneRecipe.image}}' />
-<div>{{{oneRecipe.instructions}}}</div>
+<div>
+    <h2>picture banner</h2>
+</div>
+
+<section>
+<div class="ingredients">
+    <h1>{{oneRecipe.title}}</h1>
+    <img src='{{oneRecipe.image}}'/>
+    <ul>
+   {{#each oneRecipe.extendedIngredients}}
+        <li>{{this.original}}</li>
+    {{/each}}
+    </ul>
+ 
+    
+    <div>{{oneRecipe.instructions}}</div>
+</div>
+<div class="inpiration">
+    <div>
+        <img src="american.jpg" alt="img"/>
+        <img src="american.jpg" alt="img"/>
+        <img src="american.jpg" alt="img"/>
+    </div>
+    <div>
+        <video src="" alt="video">video</video>
+    </div>
+    <div>
+        <a href="#">link to spotify</a>
+    </div>
+</div>
+</section>
+<section>
+    <div class="wine">
+        <h1>wine rec</h1>
+        <div>{{oneRecipe.winePairing.pairingText}}</div>
+    </div>
+    <div>
+        <div>
+            {{#each filteredReviews}}
+            <h1>review: {{this.comment}}</h1>   
+            {{/each}} 
+        </div>
+        <form method="POST" action="/recipe/{{oneRecipe._id}}" >
+            <label>Reviews</label>
+            <textarea id="comment" name="comment" placeholder="Write your review here.." style="height:200px"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+</section>
 
 <a href='/recipes'><button>Back to Recipes</button></a>
