@@ -22,7 +22,7 @@ const download = (id) => {
 const search = (cuisine) => {
     axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=e5ebb2d50b05472aaf7d9626f7653127&cuisine=${cuisine}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=95d6b3f742f4410fba6082d3e2db74ca&cuisine=${cuisine}`
     )
     .then((searchResult) => {
       searchResult.data.results.forEach((e) => {
@@ -41,8 +41,8 @@ search('mexican');
 search('american');
 
 // try tomorrow 
-search('chinese');
-search('japanese');
-search('mediterranean');
-search('middle eastern');
+// search('chinese');
+// search('japanese');
+// search('mediterranean');
+// search('middle eastern');
 // mongoose.connection.close()
