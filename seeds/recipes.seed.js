@@ -18,9 +18,8 @@ const download = (id) => {
     });
 };
 
-
 const search = (cuisine) => {
-    axios
+  axios
     .get(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=95d6b3f742f4410fba6082d3e2db74ca&cuisine=${cuisine}`
     )
@@ -34,15 +33,11 @@ const search = (cuisine) => {
     });
 };
 
-
 search('italian');
 search('indian');
 search('mexican');
 search('american');
-
-// try tomorrow 
-// search('chinese');
-// search('japanese');
-// search('mediterranean');
-// search('middle eastern');
-// mongoose.connection.close()
+search('chinese');
+search('japanese');
+search('mediterranean');
+search('middle eastern');
