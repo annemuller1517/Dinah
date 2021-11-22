@@ -56,41 +56,60 @@
     >Japanese</a>
   </li>
 </ul>
-<hr>
+<hr />
+<a href='/'>
+  <button type='button' class='btn btn-link back-button'>Back to Home page</button>
+</a>
+<hr />
 <h1 class='head-cuisine'>{{cuisine}}</h1>
+<div class='container'>
+  <div class='row'>
+    {{#each oneCuisine}}
+      <div class='col-sm-12 col-md-6 p-2'>
+        <div class='border p-2'>
+          <div class='title-ready'>
+            <a class='title' href='/recipe/{{this._id}}'>{{this.title}}</a>
+            <div class='min'>
+              <img class='icons' src='/icons/time.png' />
+              {{this.readyInMinutes}}
+              min
+            </div>
+          </div>
+          <div class='image-ins'>
+            <img class='images' src='{{this.image}}' />
+            <div class='instruction'>{{{this.instructions}}}</div>
+          </div>
+          <a
+            class='details'
+            data-toggle='collapse'
+            href='/recipe/{{this._id}}'
+            role='button'
+            aria-expanded='false'
+            aria-controls='collapseExample'
+          >
+            More details...
+          </a>
 
-{{#each oneCuisine}}
-  <div class='container'>
-    <div class='title-ready'>
-      <a class='title' href='/recipe/{{this._id}}'>{{this.title}}</a>
-      <div>
-        <img class='icons' src='/icons/time.png' />
-        {{this.readyInMinutes}}
-        min
+          <div class='footer'>
+            <img class='icons' src='/icons/stars.png' />
+            {{#if this.vegan}}
+              <img class='icons' src='/icons/vegan.png' />
+            {{else if this.vegetarian}}
+              <img class='icons' src='/icons/vegetarian.png' />
+            {{else}}
+              <img class='icons' src='/icons/meat.png' />
+            {{/if}}
+            {{#if this.glutenFree}}
+              <img class='icons' src='/icons/glutenfree.png' />
+            {{/if}}
+            <form method='POST' class='form'>
+              <a class='btn btn-primary' href='/recipe/{{this._id}}'>
+                Select
+              </a>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class='image-ins'>
-      <img class='images' src='{{this.image}}' />
-      <div class='instruction'>{{{this.instructions}}}</div>
-    </div>
-    <div class='footer'>
-      <img class='icons' src='/icons/stars.png' />
-      {{#if this.vegan}}
-        <img class='icons' src='/icons/vegan.png' />
-      {{else if this.vegetarian}}
-        <img class='icons' src='/icons/vegetarian.png' />
-      {{else}}
-        <img class='icons' src='/icons/meat.png' />
-      {{/if}}
-      {{#if this.glutenFree}}
-        <img class='icons' src='/icons/glutenfree.png' />
-      {{/if}}
-      <form method='POST' class='form'>
-        <a class='btn btn-primary' href='/recipe/{{this._id}}'>
-          Select
-        </a>
-      </form>
-    </div>
+    {{/each}}
   </div>
-{{/each}}
-<a href='/'><button>Back to Home Page</button></a>
+</div>

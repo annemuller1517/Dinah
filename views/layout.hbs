@@ -21,16 +21,16 @@
       <img class='logo' src='/images/logo-2.png' />
       <a class='active' href='/'>Home</a>
       {{#if isLoggedIn}}
-      <div class='topnav-right'>
-        <a href='../profile'>Profile</a>
-        {{!-- <li><a class="dropdown-item" href="/logout">Logout</a></li> --}}
-      </div>
+        <div class='topnav-right'>
+          <a href='../profile'>Profile</a>
+          {{! <li><a class="dropdown-item" href="/logout">Logout</a></li> }}
+        </div>
       {{else}}
-      <div class='topnav-right'>
-        <a href='../signup'>Signin</a>
-      </div>
+        <div class='topnav-right'>
+          <a href='../signup'>Signin</a>
+        </div>
       {{/if}}
-      
+
     </div>
 
     {{{body}}}

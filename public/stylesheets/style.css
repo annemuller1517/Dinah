@@ -3,7 +3,9 @@ body {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  ont-family: plex-sans, Helvetica Neue, Helvetica, Arial, Microsoft YaHei,
+    '\5FAE\8F6F\96C5\9ED1\4F53', Hiragino Sans GB, '\51AC\9752\9ED1\4F53',
+    sans-serif;
   margin: 0px;
 }
 
@@ -174,10 +176,12 @@ form #signup {
   text-decoration: none;
   color: black;
 }
+.back-button {
+  display: flex;
+  color: #007bff;
+}
 
 .title {
-  font-weight: 600;
-  font-size: medium;
   color: green;
 }
 .cuisine-list {
@@ -190,13 +194,10 @@ form #signup {
   text-align: center;
   text-transform: uppercase;
 }
-.container {
-  border: 3px solid grey;
-  padding: 20px;
-}
 .icons {
   height: 40px;
 }
+
 .images {
   height: 200px;
   border-radius: 6%;
@@ -214,6 +215,12 @@ form #signup {
 
 .instruction {
   padding-left: 10px;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 4.8em;
+  line-height: 1.2em;
 }
 
 .select-button {
@@ -229,4 +236,11 @@ form #signup {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.details {
+  display: flex;
+  justify-content: flex-end;
+}
+.min {
+  white-space: nowrap;
 }
