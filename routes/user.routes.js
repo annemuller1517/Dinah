@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const Recipe = require('../models/Recipe.model');
 const User = require('../models/User.model');
+// include CLOUDINARY:
+const uploader = require('../config/cloudinary.config.js');
 
 router.get('/profile', (req, res, next) => {
     // is user is not loggedin it will redirect to the signup page 
@@ -19,8 +20,7 @@ router.get('/profile', (req, res, next) => {
     User.findOne({_id: mainUser._id})
     .populate("favorites")
     .then((user) => {
-        console.log(user.favorites)
-      res.render('auth/profile.hbs', {username: user.username, email: user.email, favorites: user.favorites});
+      res.render('auth/profile.hbs', {username: user.username, email: user.email, favorites: user.favorites, img: user.img});
     })
     .catch((err) => {
       next(err)
@@ -29,6 +29,36 @@ router.get('/profile', (req, res, next) => {
 
 
 
+router.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
+    if (!req.file) {
+      res.redirect("/profile")
+    }  
+    let mainUser = req.session.loggedInUser
+
+    User.updateOne({_id: mainUser._id}, {img: req.file.path})
+    .then((user)=> {
+        res.redirect("/profile")
+    })
+    .catch((err)=> {
+        next(err)
+    })
+    if (!req.file) {
+      next(new Error('No file uploaded!'));
+      return;
+    }
+})
+
+
+router.post("/recipe/:id/delete",(req, res, next) => {
+    let {id} = req.params
+    User.update({$pull: {favorites: { $in: id}}})
+    .then(()=> {
+        res.redirect("/profile")
+    })
+    .catch((err)=> {
+        next(err)
+    })
+})
 
 
 

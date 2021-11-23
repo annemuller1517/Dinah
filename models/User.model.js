@@ -15,7 +15,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    img: String,
+    img: {
+        type: String,
+        default: "profile.png"
+    },
     favorites: [{
       type: Schema.Types.ObjectId, 
       ref: "Recipe" 

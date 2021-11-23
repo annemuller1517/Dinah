@@ -65,10 +65,13 @@ router.get('/recipe/:id', (req, res, next) => {
 });
 
 router.post('/recipe/:_id', (req, res, next) => {
+  if (!req.session.loggedInUser){
+    res.redirect("/signup")
+    return
+  }
   const {_id} = req.params
   const {name, comment} = req.body
   const user = req.session.loggedInUser._id
-
   Recipe.findById({_id})
     .then(() => {
       Review.create({comment: comment, userId:user, recipeId: _id, name: name})
@@ -86,15 +89,19 @@ router.post('/recipe/:_id', (req, res, next) => {
 
 
 router.post("/recipe/:_id/favorite", (req, res, next) => {
-    let {_id} = req.params
-    const user = req.session.loggedInUser._id
     if (!req.session.loggedInUser){
       res.redirect("/signup")
       return;
-    }
+    }  
+
+    let {_id} = req.params
+    const user = req.session.loggedInUser
+    console.log(user)
+ 
     User.updateOne({_id: user._id}, {$push: {favorites: _id}})
-    .then(()=> {
-        res.redirect(`/recipe/${_id}`)
+    .then((user)=> {
+        console.log(user.favorites)
+        res.redirect(`/profile`)
     })
     .catch((err)=> {
       next(err)

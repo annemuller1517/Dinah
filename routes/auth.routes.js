@@ -47,7 +47,7 @@ router.post("/signup", (req, res, next) => {
                     })
                 }
                 else {
-                    return res.render('auth/signup.hbs', {error: 'Username already registered.'})
+                    return res.render('auth/signup.hbs', {error: 'Username already exists.'})
                 }      
                 })
 })
@@ -62,13 +62,12 @@ router.post("/signin", (req, res, next) => {
     let {username, password} = req.body
     UserModel.findOne({username})
     .then((usernameResponse) => {
-        if(usernameResponse.length) {        
-            
-            let userObj = usernameResponse[0]
+        console.log(usernameResponse)
+        if(usernameResponse) {        
+            let userObj = usernameResponse
             let isMatching = bcrypt.compareSync(password, userObj.password);
-       
             if (isMatching){
-                req.session.myProperty = userObj;
+                req.session.loggedInUser = userObj;
                 res.render("auth/profile", {username})
             }
             else {
@@ -86,12 +85,12 @@ router.post("/signin", (req, res, next) => {
     })
 })
 
-// router.get('/logout', (req, res, next) => {
-//     req.session.destroy(function(e){
-//       req.logout();
-//       req.app.locals.isLoggedIn = false;
-//       res.redirect('/');
-//     }); 
-//   })
+
+router.get('/signout', (req, res, next) => {
+    // Deletes the session
+    // this will also automatically delete the session from the DB
+    req.session.destroy()
+    res.redirect('/signup')
+})
 
 module.exports = router

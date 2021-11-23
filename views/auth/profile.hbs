@@ -1,18 +1,27 @@
-<h1>hey {{username}}</h1>
-<h2>welcome to your profile page</h2>
 
-<div>
-    <h4>profiel picture </h4>
-</div>
-
-<div>
-    <ul>
-        {{#each favorites}}
-        <li>
-            <a href="/recipe/{{this._id}}">{{this.title}}</a>
-        </li>  
-        {{/each}}
-    </ul>
-</div>
-
-
+<div class="horizontally-centered">
+    <div id="profile-box">
+        <div id="profile-info">
+            <h2 id="profile-username">{{username}}</h2>
+            <img id="profile-img" src="{{img}}" alt="profile-img">
+            <h6>Change your picture below</h6>
+                <form method="POST" action="/upload" enctype="multipart/form-data">
+                    <input type="file" name="imageUrl" accept="image/png, image/jpg">
+                    <button class="addImg" type="submit">Upload</button> 
+                </form>  
+        </div>
+        <div class="fav-info">
+            <div id="fav-addded">
+                <h3>Favorite Recipes</h3>
+                <ul>
+                    {{#each favorites}}
+                    <li>
+                        <form class="favorite" action="/recipe/{{this._id}}/delete" method="POST">
+                        <a href="/recipe/{{this._id}}">{{this.title}}</a>
+                        <button class="deleteFav" type="submit" value="Submit"><i class="fa fa-trash"></i></button>
+                        </form>
+                    </li>  
+                    {{/each}}
+                </ul> 
+            </div>
+        </div>

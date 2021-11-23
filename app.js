@@ -37,7 +37,7 @@ app.use(
       maxAge: 1000 * 24 * 60 * 60, // your cookie will be cleared after these seconds
     },
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/basic-auth',
+      mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/dinera',
       // Time to Live for sessions in DB. After that time it will delete it!
       ttl: 24 * 60 * 60, // your session will be cleared after these seconds
     }),
@@ -45,18 +45,10 @@ app.use(
 );
 
 app.use((req,res,next) => {
-  
-  // req.app.locals.profilePic = "images/default-avatar.png"
-    // if (req.app.locals.isLoggedIn) {
-    //    req.app.locals.profilePic = req.session.loggedInUser.profilePic
-    // }  
     req.app.locals.isLoggedIn = !!req.session.loggedInUser;
     next()
   })
   
-
-
-
 
 // 👇 Start handling routes here
 const index = require('./routes/index');
