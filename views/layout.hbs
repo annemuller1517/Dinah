@@ -29,6 +29,30 @@
       <a href="/signout">Signin</a>
       {{/if}}
    </div>
+
+      {{#if isLoggedIn}}
+        <div class='topnav-right'>
+          <div class='dropdown'>
+            <img src='/icons/user.png' alt='user icon' />
+            <div class='dropdown-content'>
+              <a href='/profile'>Profile</a>
+              <a href='/signup'>Singin</a>
+            </div>
+          </div>
+        </div>
+      {{else}}
+        <div class='topnav-right'>
+          <div class='dropdown'>
+            <img src='/icons/user.png' alt='user icon' />
+            <div class='dropdown-content'>
+              <a href='/signup'>Signup</a>
+            </div>
+          </div>
+        </div>
+
+      {{/if}}
+
+    </div>
     {{{body}}}
 
     <script src='/js/script.js'></script>
