@@ -1,9 +1,18 @@
 <h1>hey {{username}}</h1>
 <h2>welcome to your profile page</h2>
 
+<div>
+    <h4>profiel picture </h4>
+</div>
 
-{{#each favorites}}
-<h1>
-    {{this.title}}
-</h1>
-{{/each}}
+<div>
+    <ul>
+        {{#each favorites}}
+        <li>
+            <a href="/recipe/{{this._id}}">{{this.title}}</a>
+        </li>  
+        {{/each}}
+    </ul>
+</div>
+
+

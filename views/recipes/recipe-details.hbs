@@ -16,7 +16,7 @@
         {{{oneRecipe.instructions}}}
     </div>
     <div class="column1">
-        {{!-- {{#if oneRecipe.cuisines.includes("Chinese")}} --}}
+        {{!-- {{#if oneRecipe.cuisines["Chinese"]}} --}}
         <img src="/images/inspiration/chinese.jpg" alt="img" height="50px"/>
         <img src="/images/inspiration/chinese2.jpg" alt="img" height="50px"/>
         <img src="/images/inspiration/chinese3.jpg" alt="img" height="50px"/>
@@ -35,9 +35,8 @@
             <h6>{{this.userId.username}}: {{this.comment}}</h6>   
             {{/each}} 
             <form method="POST" action="/recipe/{{oneRecipe._id}}">
-                <label>Reviews</label>
-                <h6>Name</h6>
-                <input type="textarea" name="name" placeholder="Enter your name" >
+            <h6>Review</h6>
+                <label></label>
                 <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
                 <button class="signupbtn"  type="submit" value="Submit">Submit</button>
             </form>
