@@ -12,6 +12,9 @@ const express = require('express');
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require('hbs');
+hbs.registerHelper('ifeq', function (arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
 
 const app = express();
 
@@ -44,19 +47,14 @@ app.use(
   })
 );
 
-app.use((req,res,next) => {
-  
+app.use((req, res, next) => {
   // req.app.locals.profilePic = "images/default-avatar.png"
-    // if (req.app.locals.isLoggedIn) {
-    //    req.app.locals.profilePic = req.session.loggedInUser.profilePic
-    // }  
-    req.app.locals.isLoggedIn = !!req.session.loggedInUser;
-    next()
-  })
-  
-
-
-
+  // if (req.app.locals.isLoggedIn) {
+  //    req.app.locals.profilePic = req.session.loggedInUser.profilePic
+  // }
+  req.app.locals.isLoggedIn = !!req.session.loggedInUser;
+  next();
+});
 
 // 👇 Start handling routes here
 const index = require('./routes/index');

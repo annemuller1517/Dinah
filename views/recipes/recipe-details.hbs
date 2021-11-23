@@ -1,11 +1,10 @@
 <h1> DETAILS</h1>
 
 <div>
-    <h2>picture banner</h2>
-</div>
-<h1>{{oneRecipe.title}}</h1>
+<h2 id="bannerimage">{{oneRecipe.title}}</h2>
 <img src='{{oneRecipe.image}}'/>
-<section>
+</div>
+<img src='{{oneRecipe.image}}'/>
 <div class="row1">
     <div class="column1">
         <ul>
@@ -24,16 +23,18 @@
         <a href="#">link to spotify</a>
         {{!-- {{/if}} --}}
     </div>
+  </div>
     <div class="row1">
         <div class="column1">
             <h1>wine rec</h1>
             <p>{{{oneRecipe.winePairing.pairingText}}}</p>
         </div>
-        <div class="column1" id="right">
+        </div>
+        <div class="column1" id="right"></div>
             <h4>Reviews</h4>
             {{#each filteredReviews}}
-            <h6>{{this.userId.username}}: {{this.comment}}</h6>   
-            {{/each}} 
+            <h6>{{this.userId.username}}: {{this.comment}}</h6>
+            {{/each}}
             <form method="POST" action="/recipe/{{oneRecipe._id}}">
                 <label>Reviews</label>
                 <h6>Name</h6>
@@ -45,6 +46,15 @@
             <form class="favorite" action="/recipe/{{oneRecipe._id}}/favorite" method="POST">
             <button class="signupbtn"  type="submit" value="Submit">add to fav</button>
             </form>
+	<div class="rating">
+    <input name="stars" id="e5" type="radio"></a><label for="e5">☆</label>
+	<input name="stars" id="e4" type="radio"></a><label for="e4">☆</label>
+		<input name="stars" id="e3" type="radio"></a><label for="e3">☆</label>
+		<input name="stars" id="e2" type="radio"></a><label for="e2">☆</label>
+		<input name="stars" id="e1" type="radio"></a><label for="e1">☆</label>
+	</div>
+
+
             {{!-- // form, when clicked on button create new rceipe in list "/recipe/:_id/favorite" --}}
-            <img class="addToFav" src="/icons/fav.png" alt="add to favorite icon" height="30px">
-        </div>
+            <img class="addToFav" src="/icons/fav.png" alt="add to favorite icon" height="30px"/>
+

@@ -56,10 +56,7 @@
     >Japanese</a>
   </li>
 </ul>
-<hr />
-<a href='/'>
-  <button type='button' class='btn btn-link back-button'>Back to Home page</button>
-</a>
+
 <hr />
 <h1 class='head-cuisine'>{{cuisine}}</h1>
 <div class='container'>
@@ -91,7 +88,6 @@
           </a>
 
           <div class='footer'>
-            <img class='icons' src='/icons/stars.png' />
             {{#if this.vegan}}
               <img class='icons' src='/icons/vegan.png' />
             {{else if this.vegetarian}}
@@ -102,6 +98,27 @@
             {{#if this.glutenFree}}
               <img class='icons' src='/icons/glutenfree.png' />
             {{/if}}
+            {{#if this.dairyFree}}
+              <img class='icons' src='/icons/dairy-free.png' />
+            {{/if}}
+            <div>
+              <img class='icons' src='/icons/serving.png' />
+              {{this.servings}}
+              {{#ifeq this.servings 1}}
+                person
+              {{else}}
+                people
+              {{/ifeq}}
+            </div>
+            <div>
+              <ul class='dish-list'>
+                {{#each this.dishTypes}}
+                  <li>
+                    {{this}}
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
             <form method='POST' class='form'>
               <a class='btn btn-primary' href='/recipe/{{this._id}}'>
                 Select
