@@ -17,8 +17,10 @@ router.get('/profile', (req, res, next) => {
       } 
 
     User.findOne({_id: mainUser._id})
+    .populate("favorites")
     .then((user) => {
-      res.render('auth/profile.hbs', {username: user.username, email: user.email});
+        console.log(user.favorites)
+      res.render('auth/profile.hbs', {username: user.username, email: user.email, favorites: user.favorites});
     })
     .catch((err) => {
       next(err)

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Recipe = require('../models/Recipe.model');
 const User = require('../models/User.model');
 const Review = require("../models/Review.model");
+const { populate } = require('../models/Recipe.model');
 
 router.get('/'),
   (req, res, next) => {
@@ -34,18 +35,26 @@ router.get('/cuisine/:cuisine', (req, res, next) => {
 });
 
 router.get('/recipe/:id', (req, res, next) => {
+  // const button = document.getElementsByClassName("addToFav")
+  // button.addEventListener('click', event => {
+  //   res.redirect("/profile")
+  // });
+
+
+
   let { id } = req.params;
-  //console.log(_id)
   Recipe.findById(id)
     .then((oneRecipe) => {
+      console.log(oneRecipe.cuisines)
       Review.find()
+      .populate("userId")
       .populate("recipeId")
       .then((reviews)=> {
+        console.log(reviews.userId)
         let filteredReviews = reviews.filter((elem) => {
           return (elem.recipeId._id == id)
           
         })
-        console.log(filteredReviews)
         res.render('recipes/recipe-details.hbs', { oneRecipe, filteredReviews });
       })
       
@@ -57,12 +66,12 @@ router.get('/recipe/:id', (req, res, next) => {
 
 router.post('/recipe/:_id', (req, res, next) => {
   const {_id} = req.params
-  const {comment} = req.body
+  const {name, comment} = req.body
   const user = req.session.loggedInUser._id
 
   Recipe.findById({_id})
     .then(() => {
-      Review.create({comment: comment, userId:user, recipeId: _id})
+      Review.create({comment: comment, userId:user, recipeId: _id, name: name})
       .then(()=> {
         res.redirect(`/recipe/${_id}`);
       })
@@ -74,5 +83,22 @@ router.post('/recipe/:_id', (req, res, next) => {
         next(err)
   })
     })
+
+
+router.post("/recipe/:_id/favorite", (req, res, next) => {
+    let {_id} = req.params
+    const user = req.session.loggedInUser._id
+    if (!req.session.loggedInUser){
+      res.redirect("/signup")
+      return;
+    }
+    User.updateOne({_id: user._id}, {$push: {favorites: _id}})
+    .then(()=> {
+        res.redirect(`/recipe/${_id}`)
+    })
+    .catch((err)=> {
+      next(err)
+    })
+})
 
 module.exports = router;

@@ -1,3 +1,9 @@
 <h1>hey {{username}}</h1>
 <h2>welcome to your profile page</h2>
 
+
+{{#each favorites}}
+<h1>
+    {{this.title}}
+</h1>
+{{/each}}
