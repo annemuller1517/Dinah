@@ -302,12 +302,33 @@ form #signup {
   list-style-type: circle;
   text-transform: capitalize;
 }
-
-#bannerimage {
-  width: 100%;
-  background-position: center;
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eab676;
+}
+.banner h4 {
+  padding: 10px;
+  font-size: xxx-large;
+  font-weight: normal;
+}
+.banner > img {
+  padding: 20px;
+}
+.banner-timer {
+  height: 40px;
+}
+.banner div {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  margin: 0 0 15px 15px;
 }
 
+.info-card {
+  border: 2px solid grey;
+}
 .rating {
   width: 226px;
   margin: 0 auto 1em;

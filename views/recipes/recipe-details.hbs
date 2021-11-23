@@ -1,33 +1,77 @@
-<h1> DETAILS</h1>
 
-<div>
-<h2 id="bannerimage">{{oneRecipe.title}}</h2>
-<img src='{{oneRecipe.image}}'/>
-</div>
-<img src='{{oneRecipe.image}}'/>
-<div class="row1">
-    <div class="column1">
-        <ul>
-        {{#each oneRecipe.extendedIngredients}}
-            <li>{{this.original}}</li>
-        {{/each}}
-        </ul>
+ <div class='banner'>
+    <h4>{{oneRecipe.title}}</h4>
+     <img src='{{oneRecipe.image}}'/>
+     <div>
+     <img class='banner-timer'src='/icons/time.png'>
+     {{oneRecipe.readyInMinutes}} min
+     </div>
+ </div>
+ <div class='container'>
+     <div class='row'>
+          <div class='col-sm-12 col-md-6 p-2'>
+ <div class="card " style="width: 50rem;">
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link info-card" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Ingredients
+        </button>
+      </h5>
+    </div>
+ <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+             <ul>
+                {{#each oneRecipe.extendedIngredients}}
+                  <li>
+                    {{this.original}}
+                  </li>
+                {{/each}}
+              </ul>
+      </div>
+    </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed info-card" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+       Instructions
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
         {{{oneRecipe.instructions}}}
+      </div>
+        </div>
+        </div>
     </div>
-    <div class="column1">
-        {{!-- {{#if oneRecipe.cuisines["Chinese"]}} --}}
-        <img src="/images/inspiration/chinese.jpg" alt="img" height="50px"/>
-        <img src="/images/inspiration/chinese2.jpg" alt="img" height="50px"/>
-        <img src="/images/inspiration/chinese3.jpg" alt="img" height="50px"/>
-        <video src="" alt="video">video</video>
-        <a href="#">link to spotify</a>
-        {{!-- {{/if}} --}}
-    </div>
+</div>
+</div>
+<div>
+    {{#each oneRecipe.cuisines}}
+    {{#ifeq this Italian}}
+    <h1>cuisiens{{this}}</h1>
+
+    <img src="/images/inspiration/mexican1.jpeg" alt="img" height="50px"/>
+    <img src="/images/inspiration/mexican2.jpeg" alt="img" height="50px"/>
+    <img src="/images/inspiration/mexican3.jpeg" alt="img" height="50px"/>
+    <video src="" alt="video">video</video>
+    <a href="#">link to spotify</a>
+    {{/ifeq}}
+    {{/each }}
+</div>
+</div>
+
+
+
+
+{{!-- </
   </div>
     <div class="row1">
         <div class="column1">
             <h1>wine rec</h1>
-            <p>{{{oneRecipe.winePairing.pairingText}}}</p>
+            <p>{{{oneRecipe.winePairing.pairingText}}</p>
         </div>
         </div>
         <div class="column1" id="right"></div>
@@ -51,7 +95,7 @@
 		<input name="stars" id="e3" type="radio"></a><label for="e3">☆</label>
 		<input name="stars" id="e2" type="radio"></a><label for="e2">☆</label>
 		<input name="stars" id="e1" type="radio"></a><label for="e1">☆</label>
-	</div>
+	</div> -
 
 
             {{!-- // form, when clicked on button create new rceipe in list "/recipe/:_id/favorite" --}}
