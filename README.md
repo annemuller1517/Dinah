@@ -14,33 +14,31 @@ The app is created for people who want to have a restaurant home experience.
 
 - GET/auth/signup
 
-  - redirects to "/" if user logged in
-  - renders login.hbs
+  - redirects to "/profile" if user logged in
+  - renders signup.hbs
 
 - GET/auth/signin
-
-  - redirects to "/" if user logged in
-  - renders login.hbs
+  - renders signup.hbs
 
 - POST /auth/signup
 
-  - redirects to "/" if user logged in
+  - redirects to "/profile" if user logged in
   - body:
     - username
-    - email
     - password
+    - email
 
 - POST /auth/signin
 
-  - redirects to "/" if user logged in
+  - redirects to "/profile" if user logged in
   - body
     - email
     - password
 
-- POST /auth/logout
+- POST /auth/signout
 
   - body: empty
-  - redirect "/"
+  - redirect "/signup"
 
 - GET /profile
 
@@ -48,52 +46,76 @@ The app is created for people who want to have a restaurant home experience.
 
 - POST /profile/delete
 
-  - body: empty
+  - favorites: delete
+  - redirects "/profile"
+
+- POST /upload 
+  - img: req.file.path
+  - redirects "/profile"
 
 - GET /recipes/:id
 
   - render recipe-details.hbs
 
-- POST /recipes/:id
+- POST /recipes/:_id
 
   - body:
     - comments
+    - userId
+    - recipeId
 
-- POST /recipes/:id
+- POST /recipes/:_id
 
   - redirect "/profile"
 
-- GET /cuisine/:cuisine_id
+- POST /recipe/:_id/favorite
+  - favorites: update
+  - redirect "/profile"
+
+- GET /cuisine/:cuisine
   - res.render "/cuisine.hbs"
 
 ## Models
 
 <hr>
 
-- User new Schema({
-  username: {
-  type: String,
-  required: true
-  }
-  email: {
-  type: String,
-  required: true
-  }
-  password: {
-  type: String,
-  required: true
-  }
-  img: String
-  favorites
-  })
+- User new Schema ({
+    username: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    img: {
+        type: String,
+        default: "profile.png"
+    },
+    favorites: [{
+      type: Schema.Types.ObjectId, 
+      ref: "Recipe" 
+    }]
+})
 
-- Comment new Schema ({
-  comments: String
-  user: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: "User"
-  }
-  })
+- Review new Schema ({
+    comment: {
+        type: String,
+        required: true,
+  },
+    userId: {
+        ref: "User",
+        type: Schema.Types.ObjectId
+    }, 
+    recipeId: {
+        ref: "Recipe",
+        type: Schema.Types.ObjectId
+    }, 
+  });
 
 - Recipe new Schema ({
   id: Number,
@@ -102,43 +124,27 @@ The app is created for people who want to have a restaurant home experience.
   readyInMinutes: Number,
   vegan: Boolean,
   vegetarian: Boolean,
-  glutenFree: Booelean,
+  glutenFree: Boolean,
+  dairyFree: Boolean,
+  dishTypes: [],
+  servings: Number,
+  instructions: String,
   extendedIngredients: [
-  original: String,
+    {
+      original: String,
+    },
   ],
-  winePairing {
-  pairingText: String
+  winePairing: {
+    pairingText: String,
   },
-  cuisine: String,
-  instructions: []
+  cuisines: [],
+  healthScore: Number,
 
-})
+});
 
 https://api.spoonacular.com/recipes/324694/analyzedInstructions
-
-- Instructions new Schema {
-  steps: [
-  {
-  step: String
-  }
-  ],
-  mainRecipe: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: "Recipe"
-  }
-  }
-
-seed all the recipes in database, store in in a new model.
 
 ## External API
 
 - https://spoonacular.com/food-api/
-  - name
-  - cuisine type
-  - ingredients
-  - image
-  - description
-  - instructions
-  - wine pairing
-  - time
-  - allergies
+ 
