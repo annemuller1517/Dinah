@@ -15,6 +15,10 @@ const userSchema = new Schema({
         required: true
     },
     img: String,
+    favorites: [{
+      type: Schema.Types.ObjectId, 
+      ref: "Recipe" 
+    }]
 })
 
 const User = model("User", userSchema);

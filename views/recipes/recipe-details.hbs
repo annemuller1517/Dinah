@@ -3,52 +3,43 @@
 <div>
     <h2>picture banner</h2>
 </div>
-
+<h1>{{oneRecipe.title}}</h1>
+<img src='{{oneRecipe.image}}'/>
 <section>
-<div class="ingredients">
-    <h1>{{oneRecipe.title}}</h1>
-    <img src='{{oneRecipe.image}}'/>
-    <ul>
-   {{#each oneRecipe.extendedIngredients}}
-        <li>{{this.original}}</li>
-    {{/each}}
-    </ul>
- 
-    
-    <div>{{oneRecipe.instructions}}</div>
-</div>
-<div class="inpiration">
-    <div>
-        <img src="american.jpg" alt="img"/>
-        <img src="american.jpg" alt="img"/>
-        <img src="american.jpg" alt="img"/>
+<div class="row1">
+    <div class="column1">
+        <ul>
+        {{#each oneRecipe.extendedIngredients}}
+            <li>{{this.original}}</li>
+        {{/each}}
+        </ul>
+        {{oneRecipe.instructions}}
     </div>
-    <div>
+    <div class="column1">
+        {{#if oneRecipe.cuisines.includes("Chinese")}}
+        <img src="chinese.jpg" alt="img"/>
+        <img src="chinese2.jpg" alt="img"/>
+        <img src="chinese3.jpg" alt="img"/>
         <video src="" alt="video">video</video>
-    </div>
-    <div>
         <a href="#">link to spotify</a>
+        {{/if}}
     </div>
-</div>
-</section>
-<section>
-    <div class="wine">
-        <h1>wine rec</h1>
-        <div>{{oneRecipe.winePairing.pairingText}}</div>
-    </div>
-    <div>
-        <div>
-            {{#each filteredReviews}}
-            <h1>review: {{this.comment}}</h1>   
-            {{/each}} 
+    <div class="row1">
+        <div class="column1">
+            <h1>wine rec</h1>
+            <p>{{oneRecipe.winePairing.pairingText}}</p>
         </div>
-        <form method="POST" action="/recipe/{{oneRecipe._id}}" >
-            <label>Reviews</label>
-            <textarea id="comment" name="comment" placeholder="Write your review here.." style="height:200px"></textarea>
-            <input type="submit" value="Submit">
-        </form>
-
-    </div>
-</section>
-
-<a href='/recipes'><button>Back to Recipes</button></a>
+        <div class="column1" id="right">
+            <h4>Reviews</h4>
+            {{#each filteredReviews}}
+            <h6>{{this.name}}: {{this.comment}}</h6>   
+            {{/each}} 
+            <form method="POST" action="/recipe/{{oneRecipe._id}}">
+                <label>Reviews</label>
+                <h6>Name</h6>
+                <input type="textarea" name="name" placeholder="Enter your name" >
+                <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
+                <button class="signupbtn"  type="submit" value="Submit">Submit</button>
+            </form>
+            <img class="addToFav" src="/icons/fav.png" alt="add to favorite icon" height="30px">
+        </div>

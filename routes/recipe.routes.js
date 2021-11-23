@@ -34,10 +34,14 @@ router.get('/cuisine/:cuisine', (req, res, next) => {
 });
 
 router.get('/recipe/:id', (req, res, next) => {
+  // const button = document.getElementsByClassName("addToFav")
+  // button.addEventListener('click', event => {
+  //   res.redirect("/profile")
+  // });
   let { id } = req.params;
-  //console.log(_id)
   Recipe.findById(id)
     .then((oneRecipe) => {
+      console.log(oneRecipe.cuisines)
       Review.find()
       .populate("recipeId")
       .then((reviews)=> {
@@ -45,7 +49,6 @@ router.get('/recipe/:id', (req, res, next) => {
           return (elem.recipeId._id == id)
           
         })
-        console.log(filteredReviews)
         res.render('recipes/recipe-details.hbs', { oneRecipe, filteredReviews });
       })
       
@@ -57,12 +60,12 @@ router.get('/recipe/:id', (req, res, next) => {
 
 router.post('/recipe/:_id', (req, res, next) => {
   const {_id} = req.params
-  const {comment} = req.body
+  const {name, comment} = req.body
   const user = req.session.loggedInUser._id
 
   Recipe.findById({_id})
     .then(() => {
-      Review.create({comment: comment, userId:user, recipeId: _id})
+      Review.create({comment: comment, userId:user, recipeId: _id, name: name})
       .then(()=> {
         res.redirect(`/recipe/${_id}`);
       })
