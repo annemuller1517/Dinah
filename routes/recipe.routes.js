@@ -2,11 +2,11 @@ const router = require('express').Router();
 const Recipe = require('../models/Recipe.model');
 const User = require('../models/User.model');
 const Review = require('../models/Review.model');
-const { populate } = require('../models/Recipe.model');
+// const { populate } = require('../models/Recipe.model');
 
 router.get('/'),
   (req, res, next) => {
-    res.render('/index.hbs');
+    res.render('index.hbs');
   };
 
 router.get('/recipes', (req, res, next) => {
