@@ -7,10 +7,35 @@
      {{oneRecipe.readyInMinutes}} min
      </div>
  </div>
+<<<<<<< HEAD
  <div class="overlay-container">
       <div class="overlay">
           <div class='ingredients'>
               <p class='over-head'>Ingredients</p>
+=======
+ {{#each pic1}}
+ <img src="{{this}}" alt="">
+{{/each}}
+<a href="{{link}}">link to playlist</a>
+<iframe width="420" height="345" src="{{video}}" frameborder="0" allowfullscreen>
+</iframe>
+ <div class='container'>
+     <div class='row'>
+          <div class='col-sm-12 col-md-6 p-2'>
+ <div class="card " style="width: 50rem;">
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link info-card" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Ingredients
+        </button>
+      </h5>
+    </div>
+ <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+             <ul>
+>>>>>>> 728c8d447800213843abf68b49278d775f780e42
                 {{#each oneRecipe.extendedIngredients}}
                   <li>
                     {{this.original}}
