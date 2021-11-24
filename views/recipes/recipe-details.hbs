@@ -27,7 +27,6 @@
     </div>
  </div>
 
-<<<<<<< HEAD
 
   <div class="overlay-container">
       <div class="overlay">
@@ -49,39 +48,6 @@
     </div>
  </div>
 
-  
-<div>
-  <h1>wine rec</h1>
-  <p>{{{oneRecipe.winePairing.pairingText}}}</p>
-</div>
-<div>
-  <h4>Reviews</h4>
-  {{#each filteredReviews}}
-  <h6>{{this.userId.username}}: {{this.comment}}</h6>
-  {{/each}}
-  <form method="POST" action="/recipe/{{oneRecipe._id}}">
-    <h6>Review</h6>
-    <label></label>
-    <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
-<button type="submit" value="Submit">Submit</button>
-  </form>
-  <form class="favorite" action="/recipe/{{oneRecipe._id}}/favorite" method="POST">
-    <button type="submit" value="Submit">add to fav</button>
-  </form>
-</div>
-
-=======
- <div>
-     <div class='inspiration-images'>
-    {{#each pic1}}
-    <img src="{{this}}" alt="">
-    {{/each}}
-     </div>
-    <a href="{{link}}">link to playlist</a>
-    <iframe width="420" height="345" src="{{video}}" frameborder="0" allowfullscreen ></iframe>
- </div>
-
-
   </div>
     <div class="row1">
         <div class="column1">
@@ -100,7 +66,6 @@
                 <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
                 <button class="signupbtn"  type="submit" value="Submit">Submit</button>
             </form>
->>>>>>> 6d9b1fb095bc69f7c54d62c9f8b8946444d0cdb1
 
 	<div class="rating">
     <input name="stars" id="e5" type="radio"></a><label for="e5">☆</label>

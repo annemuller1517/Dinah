@@ -143,10 +143,10 @@ router.post('/recipe/:_id/favorite', (req, res, next) => {
   }
 
   
-router.post('/recipe/:_id/update', (req, res, next) => {
+// router.post('/recipe/:_id/update', (req, res, next) => {
 
 
-})
+// })
 
 
   let { _id } = req.params;
