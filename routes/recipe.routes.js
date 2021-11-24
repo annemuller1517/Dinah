@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Recipe = require('../models/Recipe.model');
 const User = require('../models/User.model');
-const Review = require("../models/Review.model");
+const Review = require('../models/Review.model');
 const { populate } = require('../models/Recipe.model');
 
 router.get('/'),
@@ -40,24 +40,22 @@ router.get('/recipe/:id', (req, res, next) => {
   //   res.redirect("/profile")
   // });
 
-
-
   let { id } = req.params;
   Recipe.findById(id)
     .then((oneRecipe) => {
-      console.log(oneRecipe.cuisines)
       Review.find()
-      .populate("userId")
-      .populate("recipeId")
-      .then((reviews)=> {
-        console.log(reviews.userId)
-        let filteredReviews = reviews.filter((elem) => {
-          return (elem.recipeId._id == id)
-          
-        })
-        res.render('recipes/recipe-details.hbs', { oneRecipe, filteredReviews });
-      })
-      
+        .populate('userId')
+        .populate('recipeId')
+        .then((reviews) => {
+          console.log(reviews.userId);
+          let filteredReviews = reviews.filter((elem) => {
+            return elem.recipeId._id == id;
+          });
+          res.render('recipes/recipe-details.hbs', {
+            oneRecipe,
+            filteredReviews,
+          });
+        });
     })
     .catch(() => {
       next('Err while getting one recipe');
@@ -65,47 +63,46 @@ router.get('/recipe/:id', (req, res, next) => {
 });
 
 router.post('/recipe/:_id', (req, res, next) => {
-  if (!req.session.loggedInUser){
-    res.redirect("/signup")
-    return
+  if (!req.session.loggedInUser) {
+    res.redirect('/signup');
+    return;
   }
-  const {_id} = req.params
-  const {name, comment} = req.body
-  const user = req.session.loggedInUser._id
-  Recipe.findById({_id})
+  const { _id } = req.params;
+  const { name, comment } = req.body;
+  const user = req.session.loggedInUser._id;
+  Recipe.findById({ _id })
     .then(() => {
-      Review.create({comment: comment, userId:user, recipeId: _id})
-      .then(()=> {
-        res.redirect(`/recipe/${_id}`);
-      })
-      .catch(() => {
-        next('Err while getting one recipe');
-      });
-      })
-  .catch((err) => {
-        next(err)
-  })
+      Review.create({ comment: comment, userId: user, recipeId: _id })
+        .then(() => {
+          res.redirect(`/recipe/${_id}`);
+        })
+        .catch(() => {
+          next('Err while getting one recipe');
+        });
     })
+    .catch((err) => {
+      next(err);
+    });
+});
 
+router.post('/recipe/:_id/favorite', (req, res, next) => {
+  if (!req.session.loggedInUser) {
+    res.redirect('/signup');
+    return;
+  }
 
-router.post("/recipe/:_id/favorite", (req, res, next) => {
-    if (!req.session.loggedInUser){
-      res.redirect("/signup")
-      return;
-    }  
+  let { _id } = req.params;
+  const user = req.session.loggedInUser;
+  console.log(user);
 
-    let {_id} = req.params
-    const user = req.session.loggedInUser
-    console.log(user)
- 
-    User.updateOne({_id: user._id}, {$push: {favorites: _id}})
-    .then((user)=> {
-        console.log(user.favorites)
-        res.redirect(`/profile`)
+  User.updateOne({ _id: user._id }, { $push: { favorites: _id } })
+    .then((user) => {
+      console.log(user.favorites);
+      res.redirect(`/profile`);
     })
-    .catch((err)=> {
-      next(err)
-    })
-})
+    .catch((err) => {
+      next(err);
+    });
+});
 
 module.exports = router;

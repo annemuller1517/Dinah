@@ -7,52 +7,33 @@
      {{oneRecipe.readyInMinutes}} min
      </div>
  </div>
- <div class='container'>
-     <div class='row'>
-          <div class='col-sm-12 col-md-6 p-2'>
- <div class="card " style="width: 50rem;">
-<div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link info-card" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Ingredients
-        </button>
-      </h5>
-    </div>
- <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-             <ul>
+ <div class="overlay-container">
+      <div class="overlay">
+          <div class='ingredients'>
+              <p class='over-head'>Ingredients</p>
                 {{#each oneRecipe.extendedIngredients}}
                   <li>
                     {{this.original}}
                   </li>
                 {{/each}}
               </ul>
-      </div>
-    </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed info-card" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-       Instructions
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        {{{oneRecipe.instructions}}}
-      </div>
         </div>
+            <div class='instruction'>
+              <p class='over-head'> Instructions</p>
+             <div>{{{oneRecipe.instructions}}}</div>
+            </div>
         </div>
     </div>
-</div>
-</div>
+ </div>
+
+
+
+
+
 <div>
     {{#each oneRecipe.cuisines}}
     {{#ifeq this Italian}}
     <h1>cuisiens{{this}}</h1>
-
     <img src="/images/inspiration/mexican1.jpeg" alt="img" height="50px"/>
     <img src="/images/inspiration/mexican2.jpeg" alt="img" height="50px"/>
     <img src="/images/inspiration/mexican3.jpeg" alt="img" height="50px"/>
