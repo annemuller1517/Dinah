@@ -33,10 +33,10 @@ const search = (cuisine) => {
     });
 };
 
-// search('italian');
-// search('indian');
-// search('mexican');
-// search('american');
+search('italian');
+search('indian');
+search('mexican');
+search('american');
 search('chinese');
 search('japanese');
 search('mediterranean');

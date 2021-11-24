@@ -42,19 +42,6 @@ router.get('/recipe/:id', (req, res, next) => {
   let { id } = req.params;
   Recipe.findById(id)
     .then((oneRecipe) => {
-      Review.find()
-        .populate('userId')
-        .populate('recipeId')
-        .then((reviews) => {
-          console.log(reviews.userId);
-          let filteredReviews = reviews.filter((elem) => {
-            return elem.recipeId._id == id;
-          });
-          res.render('recipes/recipe-details.hbs', {
-            oneRecipe,
-            filteredReviews,
-          });
-        });
       if (oneRecipe.cuisines.includes("Chinese")) {
         pic1.push("/images/inspiration/chinese.jpg", "/images/inspiration/chinese2.jpg", "/images/inspiration/chinese3.jpg")
         link = "https://open.spotify.com/album/0I13LaEulpdJFna08oU7TX?si=WZ0JiqCOQxy1c7XcLHcXSw"
@@ -141,7 +128,6 @@ router.post('/recipe/:_id/favorite', (req, res, next) => {
     res.redirect('/signup');
     return;
   }
-
   
 // router.post('/recipe/:_id/update', (req, res, next) => {
 
