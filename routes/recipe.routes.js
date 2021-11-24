@@ -35,21 +35,13 @@ router.get('/cuisine/:cuisine', (req, res, next) => {
 });
 
 router.get('/recipe/:id', (req, res, next) => {
-<<<<<<< HEAD
-  // const button = document.getElementsByClassName("addToFav")
-  // button.addEventListener('click', event => {
-  //   res.redirect("/profile")
-  // });
-=======
   let pic1 = []
   let link = "" 
   let video = ""
->>>>>>> 728c8d447800213843abf68b49278d775f780e42
 
   let { id } = req.params;
   Recipe.findById(id)
     .then((oneRecipe) => {
-<<<<<<< HEAD
       Review.find()
         .populate('userId')
         .populate('recipeId')
@@ -63,7 +55,6 @@ router.get('/recipe/:id', (req, res, next) => {
             filteredReviews,
           });
         });
-=======
       if (oneRecipe.cuisines.includes("Chinese")) {
         pic1.push("/images/inspiration/chinese.jpg", "/images/inspiration/chinese2.jpg", "/images/inspiration/chinese3.jpg")
         link = "https://open.spotify.com/album/0I13LaEulpdJFna08oU7TX?si=WZ0JiqCOQxy1c7XcLHcXSw"
@@ -116,7 +107,6 @@ router.get('/recipe/:id', (req, res, next) => {
         res.render('recipes/recipe-details.hbs', { oneRecipe, filteredReviews, pic1, link, video });
       })
       
->>>>>>> 728c8d447800213843abf68b49278d775f780e42
     })
     .catch(() => {
       next('Err while getting one recipe');
@@ -128,17 +118,10 @@ router.post('/recipe/:_id', (req, res, next) => {
     res.redirect('/signup');
     return;
   }
-<<<<<<< HEAD
-  const { _id } = req.params;
-  const { name, comment } = req.body;
-  const user = req.session.loggedInUser._id;
-  Recipe.findById({ _id })
-=======
   const {_id} = req.params
   const {comment} = req.body
   const user = req.session.loggedInUser._id
   Recipe.findById({_id})
->>>>>>> 728c8d447800213843abf68b49278d775f780e42
     .then(() => {
       Review.create({ comment: comment, userId: user, recipeId: _id })
         .then(() => {
@@ -153,19 +136,18 @@ router.post('/recipe/:_id', (req, res, next) => {
     });
 });
 
-<<<<<<< HEAD
 router.post('/recipe/:_id/favorite', (req, res, next) => {
   if (!req.session.loggedInUser) {
     res.redirect('/signup');
     return;
   }
-=======
+
+  
 router.post('/recipe/:_id/update', (req, res, next) => {
 
 
 })
 
->>>>>>> 728c8d447800213843abf68b49278d775f780e42
 
   let { _id } = req.params;
   const user = req.session.loggedInUser;
