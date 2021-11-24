@@ -1,6 +1,7 @@
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
-require('dotenv/config');
+//require('dotenv/config');
+require('dotenv').config();
 
 // ℹ️ Connects to the database
 require('./db');
@@ -47,11 +48,11 @@ app.use(
   })
 );
 
-app.use((req,res,next) => {
-    req.app.locals.isLoggedIn = !!req.session.loggedInUser;
-    next()
-  })
-  
+app.use((req, res, next) => {
+  req.app.locals.isLoggedIn = !!req.session.loggedInUser;
+  next();
+});
+
 app.use((req, res, next) => {
   // req.app.locals.profilePic = "images/default-avatar.png"
   // if (req.app.locals.isLoggedIn) {

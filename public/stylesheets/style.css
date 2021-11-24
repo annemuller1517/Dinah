@@ -449,3 +449,9 @@ form #signup {
 .instruction {
   width: 50%;
 }
+
+.inspiration-images {
+  display: flex;
+  flex-direction: row;
+  height: 201px;
+}

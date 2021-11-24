@@ -27,33 +27,16 @@
     </div>
  </div>
 
- <div>  {{#each pic1}}
+ <div>
+     <div class='inspiration-images'>
+    {{#each pic1}}
     <img src="{{this}}" alt="">
-  {{/each}}
+    {{/each}}
+     </div>
     <a href="{{link}}">link to playlist</a>
-    <iframe width="420" height="345" src="{{video}}" frameborder="0" allowfullscreen>
-    </iframe>
-
-
-
+    <iframe width="420" height="345" src="{{video}}" frameborder="0" allowfullscreen ></iframe>
  </div>
 
-
-
-
-<div>
-    {{#each oneRecipe.cuisines}}
-    {{#ifeq this Italian}}
-    <h1>cuisiens{{this}}</h1>
-    <img src="/images/inspiration/mexican1.jpeg" alt="img" height="50px"/>
-    <img src="/images/inspiration/mexican2.jpeg" alt="img" height="50px"/>
-    <img src="/images/inspiration/mexican3.jpeg" alt="img" height="50px"/>
-    <video src="" alt="video">video</video>
-    <a href="#">link to spotify</a>
-    {{/ifeq}}
-    {{/each }}
-</div>
-</div>
 
   </div>
     <div class="row1">
