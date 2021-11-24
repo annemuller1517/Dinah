@@ -7,7 +7,7 @@ let Recipe = require('../models/Recipe.model');
 const download = (id) => {
   axios
     .get(
-      `https://api.spoonacular.com/recipes/${id}/information?apiKey=e5ebb2d50b05472aaf7d9626f7653127`
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=5d685f063a694f9abaf8b6a866f4246b`
     )
     .then((infoResult) => {
       Recipe.insertMany([infoResult.data]);
@@ -21,7 +21,7 @@ const download = (id) => {
 const search = (cuisine) => {
   axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=95d6b3f742f4410fba6082d3e2db74ca&cuisine=${cuisine}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=5d685f063a694f9abaf8b6a866f4246b&cuisine=${cuisine}`
     )
     .then((searchResult) => {
       searchResult.data.results.forEach((e) => {

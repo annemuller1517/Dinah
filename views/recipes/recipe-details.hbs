@@ -48,6 +48,7 @@
     </div>
  </div>
 
+<<<<<<< HEAD
   </div>
     <div class="row1">
         <div class="column1">
@@ -66,6 +67,29 @@
                 <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
                 <button class="signupbtn"  type="submit" value="Submit">Submit</button>
             </form>
+=======
+
+<div>
+  <h1>wine rec</h1>
+  <p>{{{oneRecipe.winePairing.pairingText}}}</p>
+</div>
+<div>
+  <h4>Reviews</h4>
+  {{#each filteredReviews}}
+  <h6>{{this.userId.username}}: {{this.comment}}</h6>
+  {{/each}}
+  <form method="POST" action="/recipe/{{oneRecipe._id}}">
+    <h6>Review</h6>
+    <label></label>
+    <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
+<button type="submit" value="Submit">Submit</button>
+  </form>
+  <form class="favorite" action="/recipe/{{oneRecipe._id}}/favorite" method="POST">
+    <button type="submit" value="Submit">add to fav</button>
+  </form>
+</div>
+
+>>>>>>> 1209f77bfa38e18cd7b61c38a5c1c94364bd599d
 
 	<div class="rating">
     <input name="stars" id="e5" type="radio"></a><label for="e5">☆</label>
