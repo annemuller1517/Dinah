@@ -142,16 +142,12 @@ router.post('/recipe/:_id', (req, res, next) => {
     res.redirect('/signup');
     return;
   }
-  const { _id } = req.params;
-<<<<<<< HEAD
-  const { comment } = req.body;
   if (!comment) {
     res.redirect(`/recipe/${_id}`)
     return
   }
-=======
+  const { _id } = req.params;
   const { comment, rate } = req.body;
->>>>>>> 1042c4bf6e279dc8ae6860a6fd0b2b8c6f8351bb
   const user = req.session.loggedInUser._id;
   Recipe.findById({ _id })
     .then(() => {
