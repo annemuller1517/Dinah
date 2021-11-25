@@ -1,18 +1,6 @@
 <div class='banner'>
   <h4>{{oneRecipe.title}}</h4>
   <img src="{{oneRecipe.image}}" />
-<<<<<<< HEAD
-  <div>
-    <img class="banner-timer" src="/icons/time.png" />
-    {{oneRecipe.readyInMinutes}} min
-  </div>
-  <div>
-    <form method="POST" class="favorite" action="/recipe/{{oneRecipe._id}}/favorite">
-      <button class="btn btn-link" type=" submit" value="Submit">
-        <img class="banner-timer" src="/icons/heart.png" />
-      </button>
-    </form>
-=======
   <div class='banner-fav'>
     <div>
       <img class="banner-timer" src="/icons/time.png" />
@@ -21,11 +9,10 @@
     <div>
       <form method="POST" id='favorite-heart' action="/recipe/{{oneRecipe._id}}/favorite">
         <button class="btn btn-link" type=" submit" value="Submit">
-          <img class="banner-timer" src="/images/love.png" />
+          <img class="banner-timer" src="/images/heart.png" />
         </button>
       </form>
     </div>
->>>>>>> 1042c4bf6e279dc8ae6860a6fd0b2b8c6f8351bb
   </div>
 </div>
 
