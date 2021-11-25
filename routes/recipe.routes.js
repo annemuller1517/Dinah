@@ -128,12 +128,6 @@ router.post('/recipe/:_id/favorite', (req, res, next) => {
     res.redirect('/signup');
     return;
   }
-  
-// router.post('/recipe/:_id/update', (req, res, next) => {
-
-
-// })
-
 
   let { _id } = req.params;
   const user = req.session.loggedInUser;
