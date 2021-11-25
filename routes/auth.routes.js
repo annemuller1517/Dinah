@@ -63,13 +63,12 @@ router.post('/signin', (req, res, next) => {
   let { username, password } = req.body;
   UserModel.findOne({ username })
     .then((usernameResponse) => {
-      console.log(usernameResponse);
       if (usernameResponse) {
         let userObj = usernameResponse;
         let isMatching = bcrypt.compareSync(password, userObj.password);
         if (isMatching) {
           req.session.loggedInUser = userObj;
-          res.render('auth/profile', { username });
+          res.redirect('/');
         } else {
           res.render('auth/signup.hbs', { error: 'Failed To Sign In' });
           return;
