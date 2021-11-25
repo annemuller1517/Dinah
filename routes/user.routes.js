@@ -35,7 +35,7 @@ router.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
     }  
     let mainUser = req.session.loggedInUser
 
-    User.updateOne({_id: mainUser._id}, {img: req.file.path})
+    User.findByIdAndUpdate(mainUser._id, {img: req.file.path})
     .then((user)=> {
         res.redirect("/profile")
     })
