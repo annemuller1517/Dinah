@@ -144,6 +144,10 @@ router.post('/recipe/:_id', (req, res, next) => {
   }
   const { _id } = req.params;
   const { comment } = req.body;
+  if (!comment) {
+    res.redirect(`/recipe/${_id}`)
+    return
+  }
   const user = req.session.loggedInUser._id;
   Recipe.findById({ _id })
     .then(() => {
