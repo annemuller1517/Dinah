@@ -114,10 +114,12 @@ form #signup {
   text-align: center;
   text-decoration: none;
   font-size: 17px;
+  margin: 0 10px 0 10px;
 }
 
 .logo {
   height: 40px;
+  margin: 0 10px 0 10px;
 }
 .topnav a:hover {
   color: black;
@@ -128,7 +130,8 @@ form #signup {
 }
 
 .column {
-  float: left;
+  display: flex;
+  flex-direction: column;
   width: 25%;
   padding: 10px;
 }
@@ -210,7 +213,9 @@ form #signup {
   flex-direction: row;
   padding: 10px;
 }
-
+.cuisine-border {
+  border-radius: 5px;
+}
 .sum-instruction {
   padding-left: 10px;
   display: block;
@@ -259,6 +264,8 @@ form #signup {
 .dropdown {
   position: relative;
   display: inline-block;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
 }
 
 .dropdown-content {
@@ -298,12 +305,10 @@ form #signup {
 }
 
 .fav-info {
-  padding: 30px;
+  padding: 20px;
   border: 1px solid grey;
   border-radius: 10%;
-  width: fit-content;
-  margin: 30px;
-  margin-left: 100px;
+  margin: 10px;
 }
 
 .fav-info h3 {
@@ -311,17 +316,39 @@ form #signup {
 }
 
 .favorite a {
-  font-size: 20px;
+  font-size: 15px;
   color: green;
   font-style: italic;
 }
+.profile-fav {
+  margin: 0;
+}
+.profile-edit-button {
+  width: 100px;
+  height: 30px;
+  padding: 2px;
+  background-color: green;
+  border-radius: 50px;
+  margin-left: 60px;
+}
 
+.edit-profile {
+  margin: 0;
+}
+.edit-input {
+  margin: 0;
+  padding: 10;
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+}
 .addImg {
   width: 100px;
   height: 30px;
   padding: 2px;
   margin-top: 0px;
   background-color: green;
+  border-radius: 50px;
 }
 
 #profile-info {
@@ -360,11 +387,12 @@ form #signup {
 }
 .banner h4 {
   padding: 10px;
-  font-size: xxx-large;
+  font-size: 40px;
   font-weight: normal;
 }
 .banner > img {
   padding: 20px;
+  border-radius: 10%;
 }
 .banner-timer {
   height: 40px;
@@ -372,26 +400,27 @@ form #signup {
 .banner div {
   display: flex;
   align-items: center;
-  align-self: flex-start;
   margin: 0 0;
 }
-
+#favorite-heart {
+  margin: 0;
+}
 .info-card {
   border: 2px solid grey;
 }
-.rating {
+.rate {
   width: 226px;
   margin: 0 auto 1em;
   font-size: 15px;
   overflow: hidden;
 }
-.rating input {
+.rate input {
   float: right;
   opacity: 0;
   position: absolute;
 }
 
-.rating label {
+.rate label {
   float: right;
   color: #aaa;
   text-decoration: none;
@@ -400,14 +429,11 @@ form #signup {
   -o-transition: color 0.4s;
   transition: color 0.4s;
 }
-.rating label:hover ~ label,
-.rating input:focus ~ label,
-.rating label:hover {
+.rate label:hover ~ label,
+.rate input:focus ~ label,
+.rate label:hover {
   color: blue;
   cursor: pointer;
-}
-.rating2 {
-  direction: rtl;
 }
 
 .tab-container {
@@ -433,7 +459,6 @@ form #signup {
 }
 .inspiration {
   margin: 30px;
-  border: 2px solid lightgrey;
   border-radius: 3px;
 }
 .inspiration-images {
@@ -498,4 +523,3 @@ form #signup {
 .linkedin-ref:hover {
   text-decoration: underline;
 }
-

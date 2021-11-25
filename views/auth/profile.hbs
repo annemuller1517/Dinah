@@ -1,41 +1,70 @@
+<<<<<<< HEAD
 {{#if error}}
 <p class="alert alert-danger error">{{error}}</p>
 {{/if}} 
 
+=======
+>>>>>>> 1042c4bf6e279dc8ae6860a6fd0b2b8c6f8351bb
 <div class="horizontally-centered">
     <div id="profile-box">
         <div id="profile-info">
             <h2 id="profile-username">{{username}}</h2>
-            <img id="profile-img" src="{{img}}" alt="profile-img">
+            <img id="profile-img" src="{{img}}" alt="profile-img" />
             <h6>Change your picture below</h6>
-                <form method="POST" action="/upload" enctype="multipart/form-data">
-                    <input type="file" name="imageUrl" accept="image/png, image/jpg">
-                    <button class="addImg" type="submit">Upload</button> 
-                </form>  
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <input type="file" name="imageUrl" accept="image/png, image/jpg"></input>
+                <button class="addImg" type="submit">UPLOAD</button>
+            </form>
         </div>
-        <div class="fav-info">
-            <div id="fav-addded">
-                <h3>Favorite Recipes</h3>
-                <ul>
-                    {{#each favorites}}
-                    <li>
-                        <form class="favorite" action="/recipe/{{this._id}}/delete" method="POST">
-                        <a href="/recipe/{{this._id}}">{{this.title}}</a>
-                        <button class="deleteFav" type="submit" value="Submit"><i class="fa fa-trash"></i></button>
-                        </form>
-                    </li>  
-                    {{/each}}
-                </ul> 
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col col-sm-12 col-md-6'>
+            <div class="fav-info">
+                <div>
+                    <h3>Favorite Recipes</h3>
+                    <ul>
+                        {{#each favorites}}
+                        <li>
+                            <form class="profile-fav favorite" action="/recipe/{{this._id}}/delete" method="POST">
+                                <a href="/recipe/{{this._id}}">{{this.title}}</a>
+                                <button class="deleteFav" type="submit" value="Submit"><i
+                                        class="fa fa-trash"></i></button>
+                            </form>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
         </div>
-
-
- <form method="POST" action="/profile/edit">
-    <div id="edit-title-header">
-        <h6 id="edit-title">EDIT ACCOUNT DETAILS</h6>
+        <div class='col col-sm-12 col-md-6'>
+            <div class="fav-info">
+                <form method="POST" class='edit-profile' action="/profile/edit">
+                    <div class="edit-title-header">
+                        <h3>Edit account</h3>
+                    </div>
+                    <div>
+                        Username:
+                        <input class='edit-input' name="username" value="{{username}}" required='true'></input>
+                    </div>
+                    <div>
+                        Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input class='edit-input' name="email" type="email" value="{{email}}" required='true'></input>
+                    </div>
+                    <div>
+                        <button class="profile-edit-button" type="submit">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+<<<<<<< HEAD
     <input name="username" type="text" value="{{username}}" required>
     <input name="email" type="email" value="{{email}}" required>
         <button type="submit">SUBMIT</button>
 </form>
 
+=======
+</div>
+>>>>>>> 1042c4bf6e279dc8ae6860a6fd0b2b8c6f8351bb

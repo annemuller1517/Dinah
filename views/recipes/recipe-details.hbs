@@ -1,6 +1,7 @@
 <div class='banner'>
   <h4>{{oneRecipe.title}}</h4>
   <img src="{{oneRecipe.image}}" />
+<<<<<<< HEAD
   <div>
     <img class="banner-timer" src="/icons/time.png" />
     {{oneRecipe.readyInMinutes}} min
@@ -11,8 +12,21 @@
         <img class="banner-timer" src="/icons/heart.png" />
       </button>
     </form>
+=======
+  <div class='banner-fav'>
+    <div>
+      <img class="banner-timer" src="/icons/time.png" />
+      {{oneRecipe.readyInMinutes}} min
+    </div>
+    <div>
+      <form method="POST" id='favorite-heart' action="/recipe/{{oneRecipe._id}}/favorite">
+        <button class="btn btn-link" type=" submit" value="Submit">
+          <img class="banner-timer" src="/images/love.png" />
+        </button>
+      </form>
+    </div>
+>>>>>>> 1042c4bf6e279dc8ae6860a6fd0b2b8c6f8351bb
   </div>
-
 </div>
 
 <script>
@@ -73,7 +87,7 @@
 </div>
 
 <div class='container mt-5'>
-  <div class='row'>
+  <div class='row mb-3'>
     <div class="col col-sm-12 col-md-6 wine">
       <h1>Wine Recommendation</h1>
       {{#if oneRecipe.winePairing.pairingText}}
@@ -85,22 +99,21 @@
     <div class="col col-sm-12 col-md-6">
       <h4>Reviews</h4>
       {{#each filteredReviews}}
-      <h6>{{this.userId.username}}: {{this.comment}}</h6>
+      <h6>{{this.userId.username}}: {{this.comment}} {{this.rate}}</h6>
       {{/each}}
       <form method="POST" action="/recipe/{{oneRecipe._id}}">
         <div class='review'>
           <input type="textarea" id="comment" name="comment" placeholder="Write your review here.." class='text' />
-          <div class="rating">
-            <input name="stars" id="e5" type="radio"></input><label for="e5">☆</label>
-            <input name="stars" id="e4" type="radio"></input><label for="e4">☆</label>
-            <input name="stars" id="e3" type="radio"></input><label for="e3">☆</label>
-            <input name="stars" id="e2" type="radio"></input><label for="e2">☆</label>
-            <input name="stars" id="e1" type="radio"></input><label for="e1">☆</label>
+          <div class="rate">
+            <input name="rate" id="e5" type="radio" value="5"></input><label for="e5">☆</label>
+            <input name="rate" id="e4" type="radio" value="4"></input><label for="e4">☆</label>
+            <input name="rate" id="e3" type="radio" value="3"></input><label for="e3">☆</label>
+            <input name="rate" id="e2" type="radio" value="2"></input><label for="e2">☆</label>
+            <input name="rate" id="e1" type="radio" value="1"></input><label for="e1">☆</label>
           </div>
         </div>
         <div class='review-submit'>
           <button class="btn btn-success" type="submit" value="Submit">Submit</button>
-          <button class="btn btn-success" type="submit" value="Submit">Edit</button>
         </div>
       </form>
 
