@@ -17,6 +17,10 @@ hbs.registerHelper('ifeq', function (arg1, arg2, options) {
   return arg1 == arg2 ? options.fn(this) : options.inverse(this);
 });
 
+hbs.registerHelper("stars", function(count) {
+  return "★".repeat(count) + "☆".repeat(5-count) 
+})
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
@@ -61,6 +65,15 @@ app.use((req, res, next) => {
   req.app.locals.isLoggedIn = !!req.session.loggedInUser;
   next();
 });
+
+app.use(function (req, res, next) {
+  // clears all the memory after going back 
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  next()
+});
+
 
 // 👇 Start handling routes here
 const index = require('./routes/index');

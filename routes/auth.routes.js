@@ -84,8 +84,6 @@ router.post('/signin', (req, res, next) => {
 });
 
 router.get('/signout', (req, res, next) => {
-  // Deletes the session
-  // this will also automatically delete the session from the DB
   req.session.destroy();
   res.redirect('/signup');
 });

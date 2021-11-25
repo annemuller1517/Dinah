@@ -119,8 +119,8 @@ router.get('/recipe/:id', (req, res, next) => {
         .populate('userId')
         .populate('recipeId')
         .then((reviews) => {
-          console.log(reviews.userId);
           let filteredReviews = reviews.filter((elem) => {
+            
             return elem.recipeId._id == id;
           });
           res.render('recipes/recipe-details.hbs', {
@@ -138,6 +138,7 @@ router.get('/recipe/:id', (req, res, next) => {
 });
 
 router.post('/recipe/:_id', (req, res, next) => {
+  const { comment, rate} = req.body;
   if (!req.session.loggedInUser) {
     res.redirect('/signup');
     return;
@@ -147,7 +148,7 @@ router.post('/recipe/:_id', (req, res, next) => {
     return;
   }
   const { _id } = req.params;
-  const { comment, rate } = req.body;
+  
   const user = req.session.loggedInUser._id;
   Recipe.findById({ _id })
     .then(() => {

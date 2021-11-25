@@ -86,7 +86,7 @@
     <div class="col col-sm-12 col-md-6 reviews">
       <h4>Reviews</h4>
       {{#each filteredReviews}}
-      <h6>{{this.userId.username}}: {{this.comment}} {{this.rate}}</h6>
+      <h6>{{this.userId.username}}: {{this.comment}}  {{ stars this.rate}} </h6>
       {{/each}}
       <form method="POST" action="/recipe/{{oneRecipe._id}}">
         <div class='review'>
