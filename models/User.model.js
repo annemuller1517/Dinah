@@ -17,7 +17,7 @@ const userSchema = new Schema({
     },
     img: {
         type: String,
-        default: "profile.png"
+        default: "images/profile.png"
     },
     favorites: [{
       type: Schema.Types.ObjectId, 

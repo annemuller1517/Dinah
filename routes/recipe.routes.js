@@ -166,10 +166,6 @@ router.post('/recipe/:_id/favorite', (req, res, next) => {
     return;
   }
 
-  // router.post('/recipe/:_id/update', (req, res, next) => {
-
-  // })
-
   let { _id } = req.params;
   const user = req.session.loggedInUser;
   console.log(user);

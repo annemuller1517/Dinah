@@ -61,6 +61,22 @@ router.post("/recipe/:id/delete",(req, res, next) => {
 })
 
 
+router.post('/profile/edit', (req, res, next) => {
+  let mainUser = req.session.loggedInUser
+    let { username, email} = req.body
+  
+    if ( !username || !email) { 
+      res.render('auth/profile', {error: 'Please enter all fields'})
+    }
+    User.findByIdAndUpdate(mainUser._id, {username: username, email:email})
+      .then(() => {
+        res.redirect('/profile')
+      })
+      .catch((err) => {
+        next(err)
+      })
+  
+  })
 
 
 
