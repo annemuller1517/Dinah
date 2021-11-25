@@ -1,101 +1,106 @@
-
- <div class='banner'>
-    <h4>{{oneRecipe.title}}</h4>
-     <img src='{{oneRecipe.image}}'/>
-     <div>
-     <img class='banner-timer'src='/icons/time.png'>
-     {{oneRecipe.readyInMinutes}} min
-     </div>
- </div>
- <div class="overlay-container">
-      <div class="overlay">
-          <div class='ingredients'>
-              <p class='over-head'>Ingredients</p>
-             <ul>
-                {{#each oneRecipe.extendedIngredients}}
-                  <li>
-                    {{this.original}}
-                  </li>
-                {{/each}}
-              </ul>
-        </div>
-            <div class='instruction'>
-              <p class='over-head'> Instructions</p>
-             <div>{{{oneRecipe.instructions}}}</div>
-            </div>
-        </div>
-    </div>
- </div>
-
-
-  <div class="overlay-container">
-      <div class="overlay">
-          <div class='ingredients'>
-              <p class='over-head'>Inspiration</p>
-             {{#each pic1}}
-                <img src="{{this}}" alt="picture" height="50px">
-              {{/each}}
-          </div>
-          <div>
-            <a href="{{link}}">link to playlist</a>
-          </div>
-            <div class='instruction'>
-              <p class='over-head'> Instructions</p>
-    <iframe width="420" height="345" src="{{video}}" frameborder="0" allowfullscreen>
-    </iframe>
-            </div>
-        </div>
-    </div>
- </div>
-
-<<<<<<< HEAD
+<div class='banner'>
+  <h4>{{oneRecipe.title}}</h4>
+  <img src="{{oneRecipe.image}}" />
+  <div>
+    <img class="banner-timer" src="/icons/time.png" />
+    {{oneRecipe.readyInMinutes}} min
   </div>
-    <div class="row1">
-        <div class="column1">
-            <h1>wine rec</h1>
-            <p>{{{oneRecipe.winePairing.pairingText}}}</p>
-        </div>
-        </div>
-        <div class="column1" id="right"></div>
-            <h4>Reviews</h4>
-            {{#each filteredReviews}}
-            <h6>{{this.userId.username}}: {{this.comment}}</h6>
-            {{/each}}
-            <form method="POST" action="/recipe/{{oneRecipe._id}}">
-            <h6>Review</h6>
-                <label></label>
-                <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
-                <button class="signupbtn"  type="submit" value="Submit">Submit</button>
-            </form>
-=======
+  <div>
+    <form method="POST" class="favorite" action="/recipe/{{oneRecipe._id}}/favorite">
+      <button class="btn btn-link" type=" submit" value="Submit">
+        <img class="banner-timer" src="/images/love.png" />
+      </button>
+    </form>
+  </div>
 
-<div>
-  <h1>wine rec</h1>
-  <p>{{{oneRecipe.winePairing.pairingText}}}</p>
-</div>
-<div>
-  <h4>Reviews</h4>
-  {{#each filteredReviews}}
-  <h6>{{this.userId.username}}: {{this.comment}}</h6>
-  {{/each}}
-  <form method="POST" action="/recipe/{{oneRecipe._id}}">
-    <h6>Review</h6>
-    <label></label>
-    <input type="textarea" id="comment" name="comment" placeholder="Write your review here.."></textarea>
-<button type="submit" value="Submit">Submit</button>
-  </form>
-  <form class="favorite" action="/recipe/{{oneRecipe._id}}/favorite" method="POST">
-    <button type="submit" value="Submit">add to fav</button>
-  </form>
 </div>
 
->>>>>>> 1209f77bfa38e18cd7b61c38a5c1c94364bd599d
+<script>
+  function showIngredients() {
+    document.querySelector('.ingredients').style.display = 'block';
+    document.querySelector('.instruction').style.display = 'none';
+  }
+  function showInstructions() {
+    document.querySelector('.ingredients').style.display = 'none';
+    document.querySelector('.instruction').style.display = 'block';
+  }
+</script>
+<div class='container'>
+  <div class='row'>
+    <div class='col col-sm-12 col-md-6'>
+      <div class="tab-container">
+        <div class="recipe-tabs">
+          <button class="btn btn-light" onclick="showIngredients()">Ingredients</button>
+          <button class="btn btn-light" onclick="showInstructions()">Instructions</button>
+        </div>
+        <div class="tab-contents">
+          <div class='ingredients'>
+            <ul>
+              {{#each oneRecipe.extendedIngredients}}
+              <li>
+                {{this.original}}
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class='instruction'>
+            <div>{{{oneRecipe.instructions}}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<div class="rating">
-    <input name="stars" id="e5" type="radio"></a><label for="e5">☆</label>
-	<input name="stars" id="e4" type="radio"></a><label for="e4">☆</label>
-		<input name="stars" id="e3" type="radio"></a><label for="e3">☆</label>
-		<input name="stars" id="e2" type="radio"></a><label for="e2">☆</label>
-		<input name="stars" id="e1" type="radio"></a><label for="e1">☆</label>
-	</div>
+    <div class='col col-sm-12 col-md-6'>
+      <button class="btn disabled">Inspiration</button>
+      <div class='inspiration'>
+        <div class='inspiration-images'>
+          {{#each pic1}}
+          <img src="{{this}}" alt="picture" height="120" />
+          {{/each}}
+        </div>
+        <div class="spotify-youtube">
+          <a class='spotify-link' href="{{link}}">
+            <img src="/images/inspiration/spotify-logo.png" alt="spotify" />
+          </a>
+          <div class='youtube-link'>
+            <iframe width="350" height="200" src="{{video}}" frameborder="0" allowfullscreen="true">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class='container mt-5'>
+  <div class='row'>
+    <div class="col col-sm-12 col-md-6 wine">
+      <h1>Wine Recommendation</h1>
+      <p>{{{oneRecipe.winePairing.pairingText}}}</p>
+    </div>
+    <div class="col col-sm-12 col-md-6">
+      <h4>Reviews</h4>
+      {{#each filteredReviews}}
+      <h6>{{this.userId.username}}: {{this.comment}}</h6>
+      {{/each}}
+      <form method="POST" action="/recipe/{{oneRecipe._id}}">
+        <div class='review'>
+          <input type="textarea" id="comment" name="comment" placeholder="Write your review here.." class='text' />
+          <div class="rating">
+            <input name="stars" id="e5" type="radio"></input><label for="e5">☆</label>
+            <input name="stars" id="e4" type="radio"></input><label for="e4">☆</label>
+            <input name="stars" id="e3" type="radio"></input><label for="e3">☆</label>
+            <input name="stars" id="e2" type="radio"></input><label for="e2">☆</label>
+            <input name="stars" id="e1" type="radio"></input><label for="e1">☆</label>
+          </div>
+        </div>
+        <div class='review-submit'>
+          <button class="btn btn-success" type="submit" value="Submit">Submit</button>
+          <button class="btn btn-success" type="submit" value="Submit">Edit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
