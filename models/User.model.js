@@ -23,7 +23,6 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId, 
       ref: "Recipe" 
     }],
-    googleID: String,
 })
 
 const User = model("User", userSchema);
