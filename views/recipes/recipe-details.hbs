@@ -76,7 +76,11 @@
   <div class='row'>
     <div class="col col-sm-12 col-md-6 wine">
       <h1>Wine Recommendation</h1>
+      {{#if oneRecipe.winePairing.pairingText}}
       <p>{{{oneRecipe.winePairing.pairingText}}}</p>
+      {{else}}
+      <p>All drinks are delicious with this dish</p>
+      {{/if}}
     </div>
     <div class="col col-sm-12 col-md-6">
       <h4>Reviews</h4>
