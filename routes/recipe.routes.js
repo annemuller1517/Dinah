@@ -82,7 +82,7 @@ router.get('/recipe/:id', (req, res, next) => {
         pic1.push(
           '/images/inspiration/japanese1.jpg',
           '/images/inspiration/japanese2.jpg',
-          '/images/inspiration/japanese3.jpg'
+          '/images/inspiration/japanese3.jpeg'
         );
         link =
           'https://open.spotify.com/playlist/0xkVkak4rtnux3w0VBhOMp?si=869f757b09b04431';
@@ -108,7 +108,7 @@ router.get('/recipe/:id', (req, res, next) => {
       } else if (oneRecipe.cuisines.includes('Mexican')) {
         pic1.push(
           '/images/inspiration/mexican1.jpg',
-          '/images/inspiration/mexican12.jpeg',
+          '/images/inspiration/mexican2.jpeg',
           '/images/inspiration/mexican3.jpeg'
         );
         link =
