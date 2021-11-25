@@ -6,7 +6,6 @@ require('./Recipe.model');
 const reviewSchema = new Schema({
   rate: {
     type: Number,
-    required: true,
   },
   comment: {
     type: String,
