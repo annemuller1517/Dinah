@@ -1,59 +1,27 @@
 <ul class='nav cuisine-list'>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/chinese'
-    >Chinese</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/chinese'>Chinese</a>
   </li>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/american'
-    >American</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/american'>American</a>
   </li>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/Middle Eastern'
-    >Middle Eastern</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/Middle Eastern'>Middle Eastern</a>
   </li>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/italian'
-    >Italian</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/italian'>Italian</a>
   </li>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/mexican'
-    >Mexican</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/mexican'>Mexican</a>
   </li>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/mediterranean'
-    >Mediterranean</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/mediterranean'>Mediterranean</a>
   </li>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/indian'
-    >Indian</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/indian'>Indian</a>
   </li>
   <li class='nav-item'>
-    <a
-      class='nav-link active cuisine-button'
-      aria-current='page'
-      href='/cuisine/japanese'
-    >Japanese</a>
+    <a class='nav-link active cuisine-button' aria-current='page' href='/cuisine/japanese'>Japanese</a>
   </li>
 </ul>
 <hr />
@@ -61,71 +29,65 @@
 <div class='container'>
   <div class='row'>
     {{#each oneCuisine}}
-      <div class='col-sm-12 col-md-6 p-2'>
-        <div class='border p-2'>
-          <div class='title-ready'>
-            <a class='title' href='/recipe/{{this._id}}'>{{this.title}}</a>
-            <div class='min'>
-              <img class='icons' src='/icons/time.png' />
-              {{this.readyInMinutes}}
-              min
-            </div>
-          </div>
-          <div class='image-ins'>
-            <img class='images' src='{{this.image}}' />
-            <div class='sum-instruction'>{{{this.instructions}}}</div>
-          </div>
-          <a
-            class='details'
-            data-toggle='collapse'
-            href='/recipe/{{this._id}}'
-            role='button'
-            aria-expanded='false'
-            aria-controls='collapseExample'
-          >
-            More details...
-          </a>
-
-          <div class='footer'>
-            {{#if this.vegan}}
-              <img class='icons' src='/icons/vegan.png' />
-            {{else if this.vegetarian}}
-              <img class='icons' src='/icons/vegetarian.png' />
-            {{else}}
-              <img class='icons' src='/icons/meat.png' />
-            {{/if}}
-            {{#if this.glutenFree}}
-              <img class='icons' src='/icons/glutenfree.png' />
-            {{/if}}
-            {{#if this.dairyFree}}
-              <img class='icons' src='/icons/dairy-free.png' />
-            {{/if}}
-            <div>
-              <img class='icons' src='/icons/serving.png' />
-              {{this.servings}}
-              {{#ifeq this.servings 1}}
-                person
-              {{else}}
-                people
-              {{/ifeq}}
-            </div>
-            <div>
-              <ul class='dish-list'>
-                {{#each this.dishTypes}}
-                  <li>
-                    {{this}}
-                  </li>
-                {{/each}}
-              </ul>
-            </div>
-            <form method='POST' class='form'>
-              <a class='btn btn-primary' href='/recipe/{{this._id}}'>
-                Select
-              </a>
-            </form>
+    <div class='col-sm-12 col-md-6 p-2'>
+      <div class='border p-2 cuisine-border'>
+        <div class='title-ready'>
+          <a class='title' href='/recipe/{{this._id}}'>{{this.title}}</a>
+          <div class='min'>
+            <img class='icons' src='/icons/time.png' />
+            {{this.readyInMinutes}}
+            min
           </div>
         </div>
+        <div class='image-ins'>
+          <img class='images' src='{{this.image}}' />
+          <div class='sum-instruction'>{{{this.instructions}}}</div>
+        </div>
+        <a class='details' data-toggle='collapse' href='/recipe/{{this._id}}' role='button' aria-expanded='false'
+          aria-controls='collapseExample'>
+          More details...
+        </a>
+
+        <div class='footer'>
+          {{#if this.vegan}}
+          <img class='icons' src='/icons/vegan.png' />
+          {{else if this.vegetarian}}
+          <img class='icons' src='/icons/vegetarian.png' />
+          {{else}}
+          <img class='icons' src='/icons/meat.png' />
+          {{/if}}
+          {{#if this.glutenFree}}
+          <img class='icons' src='/icons/glutenfree.png' />
+          {{/if}}
+          {{#if this.dairyFree}}
+          <img class='icons' src='/icons/dairy-free.png' />
+          {{/if}}
+          <div>
+            <img class='icons' src='/icons/serving.png' />
+            {{this.servings}}
+            {{#ifeq this.servings 1}}
+            person
+            {{else}}
+            people
+            {{/ifeq}}
+          </div>
+          <div>
+            <ul class='dish-list'>
+              {{#each this.dishTypes}}
+              <li>
+                {{this}}
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          <form method='POST' class='form'>
+            <a class='btn btn-primary' href='/recipe/{{this._id}}'>
+              Select
+            </a>
+          </form>
+        </div>
       </div>
+    </div>
     {{/each}}
   </div>
 </div>

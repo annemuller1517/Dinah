@@ -23,11 +23,11 @@ const app = express();
 require('./config')(app);
 
 // default value for title local
-const projectName = 'home-date';
+const projectName = 'Dinerah';
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
+app.locals.title = `${capitalized(projectName)}`;
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');

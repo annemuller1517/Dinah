@@ -143,11 +143,16 @@ router.post('/recipe/:_id', (req, res, next) => {
     return;
   }
   const { _id } = req.params;
-  const { comment } = req.body;
+  const { comment, rate } = req.body;
   const user = req.session.loggedInUser._id;
   Recipe.findById({ _id })
     .then(() => {
-      Review.create({ comment: comment, userId: user, recipeId: _id })
+      Review.create({
+        rate: rate,
+        comment: comment,
+        userId: user,
+        recipeId: _id,
+      })
         .then(() => {
           res.redirect(`/recipe/${_id}`);
         })
