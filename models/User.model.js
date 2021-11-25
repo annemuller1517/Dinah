@@ -22,7 +22,8 @@ const userSchema = new Schema({
     favorites: [{
       type: Schema.Types.ObjectId, 
       ref: "Recipe" 
-    }]
+    }],
+    googleID: String,
 })
 
 const User = model("User", userSchema);
