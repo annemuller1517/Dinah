@@ -27,9 +27,9 @@ router.post("/signup", (req, res, next) => {
     }
 
 
-    let passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    let passwordRegEx = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
     if (!passwordRegEx.test(password)) {
-        res.render("auth/signup", {error:"Please enter a valid password: Minimum eight characters, at least one lower case, one upper case one number"})
+        res.render("auth/signup", {error:"Password needs to have a special character, a number, and be 6-16 characters"})
         return;
     }
 

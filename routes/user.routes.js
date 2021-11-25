@@ -31,21 +31,19 @@ router.get('/profile', (req, res, next) => {
 
 router.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
     if (!req.file) {
-      res.redirect("/profile")
-    }  
+      res.render("auth/profile", {error: 'Please select a file'})
+      return
+    }
+
     let mainUser = req.session.loggedInUser
 
-    User.updateOne({_id: mainUser._id}, {img: req.file.path})
-    .then((user)=> {
+    User.findByIdAndUpdate(mainUser._id, {img: req.file.path})
+    .then(()=> {
         res.redirect("/profile")
     })
     .catch((err)=> {
         next(err)
     })
-    if (!req.file) {
-      next(new Error('No file uploaded!'));
-      return;
-    }
 })
 
 
