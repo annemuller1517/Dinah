@@ -1,14 +1,7 @@
 body {
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  margin: 0 0 20px 0;
 }
-
-body {
-  ont-family: plex-sans, Helvetica Neue, Helvetica, Arial, Microsoft YaHei,
-    '\5FAE\8F6F\96C5\9ED1\4F53', Hiragino Sans GB, '\51AC\9752\9ED1\4F53',
-    sans-serif;
-  margin: 0px;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -292,7 +285,7 @@ form #signup {
   border: none;
   color: black;
   padding: 12px 16px;
-  font-size: 34px;
+  font-size: 20px;
   cursor: pointer;
   width: 80px;
   display: inline-block;
@@ -349,6 +342,13 @@ form #signup {
   margin-top: 0px;
   background-color: green;
   border-radius: 50px;
+}
+
+.rec-delete {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #profile-info {
@@ -473,6 +473,14 @@ form #signup {
   border-radius: 3px;
   padding: 8px;
 }
+.inspiration-button {
+  color: #212529;
+  display: flex;
+  justify-content: center;
+  background: #f8f9fa;
+  margin-top: 10px;
+  cursor: unset !important;
+}
 .recipe-tabs {
   display: flex;
   flex-direction: row;
@@ -491,6 +499,7 @@ form #signup {
 .review {
   display: flex;
   flex-direction: row;
+  padding: 0 0 0 20px;
 }
 .text {
   margin: 20px;
@@ -501,20 +510,34 @@ form #signup {
 }
 .review-submit button {
   margin: 20px;
+  width: 20%;
+}
+.reviews {
+  border-radius: 3px;
+  padding: 20px 60px;
+  text-align: center;
+}
+.reviews input {
+  margin: 0;
 }
 .youtube-link {
   margin: 20px;
 }
 .wine {
-  border: 2px solid lightgrey;
   border-radius: 3px;
   padding: 20px;
+}
+.wine h4 {
   text-align: center;
 }
-
 .footer-lay {
-  background-color: #f4f5b0;
+  background-color: #f7f4e0;
   text-align: center;
+  flex: 1;
+  flex-direction: column;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
 .linkedin-ref {
   text-decoration: none;

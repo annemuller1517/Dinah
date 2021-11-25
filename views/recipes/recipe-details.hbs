@@ -52,7 +52,7 @@
     </div>
 
     <div class='col col-sm-12 col-md-6'>
-      <button class="btn disabled">Inspiration</button>
+      <div class="inspiration-button btn">Inspiration</div>
       <div class='inspiration'>
         <div class='inspiration-images'>
           {{#each pic1}}
@@ -76,14 +76,14 @@
 <div class='container mt-5'>
   <div class='row mb-3'>
     <div class="col col-sm-12 col-md-6 wine">
-      <h1>Wine Recommendation</h1>
+      <h4>Wine Recommendation</h4>
       {{#if oneRecipe.winePairing.pairingText}}
       <p>{{{oneRecipe.winePairing.pairingText}}}</p>
       {{else}}
       <p>All drinks are delicious with this dish</p>
       {{/if}}
     </div>
-    <div class="col col-sm-12 col-md-6">
+    <div class="col col-sm-12 col-md-6 reviews">
       <h4>Reviews</h4>
       {{#each filteredReviews}}
       <h6>{{this.userId.username}}: {{this.comment}} {{this.rate}}</h6>

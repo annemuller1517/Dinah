@@ -25,9 +25,11 @@
                         {{#each favorites}}
                         <li>
                             <form class="profile-fav favorite" action="/recipe/{{this._id}}/delete" method="POST">
-                                <a href="/recipe/{{this._id}}">{{this.title}}</a>
-                                <button class="deleteFav" type="submit" value="Submit"><i
-                                        class="fa fa-trash"></i></button>
+                                <div class='rec-delete'>
+                                    <a href="/recipe/{{this._id}}">{{this.title}}</a>
+                                    <button class="deleteFav" type="submit" value="Submit"><i
+                                            class="fa fa-trash"></i></button>
+                                </div>
                             </form>
                         </li>
                         {{/each}}
@@ -56,3 +58,4 @@
             </div>
         </div>
     </div>
+</div>
